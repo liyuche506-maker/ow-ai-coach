@@ -1,0 +1,97 @@
+[
+  {
+    "replay_code": "QN4070",
+    "title": "goated ass ana game",
+    "player": "Ben",
+    "rank": "Diamond 3",
+    "map": "Hollywood",
+    "outcome": "win",
+    "duration": "00:24:08",
+    "patch": "2.24.1.0",
+    "description": "",
+    "owreplays_url": "https://owreplays.tv/QN4070",
+    "vod_cameras": [
+      {
+        "player_name": "BEN",
+        "youtube_url": "https://www.youtube.com/watch?v=fCLHZO7fsZ8",
+        "status": "ok"
+      }
+    ]
+  },
+  {
+    "replay_code": "V89RSK",
+    "title": "one of the most devestating c9s on an AMAZING game",
+    "player": "Ben",
+    "rank": "Diamond 3",
+    "map": "Lijiang Tower",
+    "outcome": "win",
+    "duration": "00:16:24",
+    "patch": "2.24.1.0",
+    "description": "",
+    "owreplays_url": "https://owreplays.tv/V89RSK",
+    "vod_cameras": [
+      {
+        "player_name": "BEN",
+        "youtube_url": "https://www.youtube.com/watch?v=D-Bsj0aNoPo",
+        "status": "ok"
+      }
+    ]
+  },
+  {
+    "replay_code": "HZJK6E",
+    "title": "뉴정시 아나 플레이",
+    "player": "CN7",
+    "rank": "Diamond 4",
+    "map": "New Junk City",
+    "outcome": "win",
+    "duration": "00:14:15",
+    "patch": "2.24.1.0",
+    "description": "",
+    "owreplays_url": "https://owreplays.tv/HZJK6E",
+    "vod_cameras": [
+      {
+        "player_name": "CN7",
+        "youtube_url": "https://www.youtube.com/watch?v=hGWJHwOj7zc",
+        "status": "ok"
+      }
+    ]
+  },
+  {
+    "replay_code": "D86HQF",
+    "title": "19-1 ana type shit",
+    "player": "Ben",
+    "rank": "Diamond 3",
+    "map": "New Queen Street",
+    "outcome": "win",
+    "duration": "00:10:44",
+    "patch": "2.24.1.0",
+    "description": "",
+    "owreplays_url": "https://owreplays.tv/D86HQF",
+    "vod_cameras": [
+      {
+        "player_name": "BEN",
+        "youtube_url": "https://www.youtube.com/watch?v=Z6TserShEPY",
+        "status": "ok"
+      }
+    ]
+  },
+  {
+    "replay_code": "MFTXPE",
+    "title": "Flanking Ana",
+    "player": "DRE",
+    "rank": "Diamond 4",
+    "map": "Colosseo",
+    "outcome": "loss",
+    "duration": "00:12:06",
+    "patch": "2.24.0.3",
+    "description": "",
+    "owreplays_url": "https://owreplays.tv/MFTXPE",
+    "vod_cameras": [
+      {
+        "player_name": "마지막싶세",
+        "youtube_url": "https://www.youtube.com/watch?v=PRih_BFalY0",
+        "status": "ok"
+      }
+    ]
+  }
+]

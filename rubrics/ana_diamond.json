@@ -1,0 +1,52 @@
+{
+  "rubric_id": "ana_diamond_v1",
+  "hero": "Ana",
+  "target_rank": "Diamond (Diamond 5 - Diamond 1)",
+  "rank_context": "Diamond Ana players generally understand basic mechanics and healing output, but plateau due to passive utility usage (defensive heal-nades instead of fight-winning anti-nades), wasting Sleep Dart before enemy dive commits, poor Nano Boost tempo/economy, and healbotting tanks instead of weaving damage.",
+  "forbidden_platitudes": [
+    "注意走位",
+    "多找掩体",
+    "提高命中率",
+    "把枪练好",
+    "多和队友沟通",
+    "注意安全"
+  ],
+  "rules": [
+    {
+      "rule_id": "ANA_DIA_01",
+      "category": "Biotic Grenade Value (生物手雷进攻转化率)",
+      "severity": "HIGH",
+      "timeline_condition": "Count across match: ratio of Biotic Grenades used for offensive purple anti-heal (`offensive_anti`) vs defensive yellow heal (`defensive_heal` / `self_heal`).",
+      "violation_threshold": "offensive_anti_ratio < 0.45 OR self_heal_nade_triggered_without_dive_pressure",
+      "diagnostic_template": "在 [{timestamp}] ({alive_ratio})，你将生物手雷用于{actual_target}，而非在接团期禁疗敌方前排/核心。整局你的进攻紫瓶占比仅为 {offensive_anti_pct}%（钻石进阶标准应 ≥ 50%）。",
+      "actionable_fix": "当己方主T血量高于50%且有掩体时，用普通左键维持血线，把E技能（生物手雷）留到双方前排交火、敌方护盾/金身/铃铛交出后的窗口，优先砸向敌方前排或侧翼制造禁疗击杀点。"
+    },
+    {
+      "rule_id": "ANA_DIA_02",
+      "category": "Sleep Dart Discipline (睡眠针防切纪律)",
+      "severity": "CRITICAL",
+      "timeline_condition": "Enemy composition contains dive/flank threat AND player fires Sleep Dart at range >15m at enemy frontline/tank (`poke_lottery_sleep`) AND player is dove or killed within 14 seconds while Sleep Dart is on cooldown.",
+      "violation_threshold": "sleep_on_cd_when_dove == true",
+      "diagnostic_template": "在 [{timestamp}] ({alive_ratio})，敌方存活威胁包含 {enemy_threats}，但你在 [{sleep_used_time}] 先把睡眠针远距离抽奖丢给了 {sleep_target}，导致 {seconds_later} 秒后被切入时睡眠针仍在CD（剩余 {cd_remaining}s）而阵亡。",
+      "actionable_fix": "面对机动坦或狗位C位时，严禁开团前用睡眠针远距离摸奖敌方前排。只要敌方刺客/跳坦未露面或未交位移，睡眠针必须捏在手里作为唯一自保底牌。"
+    },
+    {
+      "rule_id": "ANA_DIA_03",
+      "category": "Nano Boost Fight Economy (纳米激素残局纪律与节奏)",
+      "severity": "CRITICAL",
+      "timeline_condition": "Player activates Ultimate (Nano Boost) when `ally_alive - enemy_alive <= -2` (e.g., 3v5, 2v4) OR holds 100% Ultimate charge for > 90 seconds across lost/neutral fights.",
+      "violation_threshold": "nano_used_at_number_disadvantage <= -2 OR ult_hold_duration_sec > 90",
+      "diagnostic_template": "在 [{timestamp}]，右上角击杀面板显示已处于 {alive_ratio}（核心队友 {dead_allies} 已阵亡），此时交出纳米激素给 {nano_target} 属于无效残局大招，直接导致下一波团战丧失大招经济优势。",
+      "actionable_fix": "按Q前强制看一眼右上角击杀板：若己方已减员2人或主T已倒，立刻停手送死重整（Reset）；反之在5v5均势接团或4v4拉扯时，一旦队友进场即可果断交激素抢下先手减员，不要死等完美的拔刀/战术目镜配合。"
+    },
+    {
+      "rule_id": "ANA_DIA_04",
+      "category": "Healbot Tunnel Vision vs Damage Weaving (无效溢奶与输出穿插)",
+      "severity": "MEDIUM",
+      "timeline_condition": "Player fires >= 4 consecutive shots into allies at >85% HP while enemy squishies/supports are visible in line of sight, OR remains hard-scoped > 3.5 seconds in open sightline.",
+      "violation_threshold": "overheal_shots_ratio > 0.30 OR hardscope_death == true",
+      "diagnostic_template": "在 [{timestamp}] ({alive_ratio})，己方前排血量健康（>{ally_hp_pct}%），但你连续开镜纯奶队友长达 {duration}s，错失了三枪点残敌方暴露在掩体外的 {exposed_enemy} 的机会。",
+      "actionable_fix": "钻石分段安娜不能只做‘擦屁股奶妈’。在队友没有暴毙风险（血量>70%）时，养成‘奶两枪、点敌方后排/侧翼一枪’的穿插节奏（70分1枪无衰减伤害只需3枪即可逼退或击杀敌方C位/辅助）。"
+    }
+  ]
+}

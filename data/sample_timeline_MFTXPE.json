@@ -1,0 +1,175 @@
+{
+  "match_meta": {
+    "replay_code": "MFTXPE",
+    "title": "Flanking Ana",
+    "player": "DRE",
+    "hero": "Ana",
+    "rank": "Diamond 4",
+    "map": "Colosseo",
+    "outcome": "loss",
+    "duration": "00:12:06",
+    "youtube_url": "https://www.youtube.com/watch?v=PRih_BFalY0",
+    "enemy_threats": ["Winston", "Tracer", "Genji"]
+  },
+  "fights": [
+    {
+      "fight_id": 1,
+      "time_range": "00:48 - 01:22",
+      "outcome": "LOST",
+      "events": [
+        {
+          "t": "00:54",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "player_hp": 250,
+          "ult_charge_pct": 32,
+          "event_type": "sleep_dart_used",
+          "target": "敌方温斯顿护盾外远距离摸奖（距离24m，未命中）",
+          "is_poke_lottery_sleep": true,
+          "sleep_dart_state": "cd:14s",
+          "biotic_nade_state": "ready"
+        },
+        {
+          "t": "00:59",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "player_hp": 110,
+          "ult_charge_pct": 41,
+          "event_type": "biotic_nade_used",
+          "nade_usage": "self_heal",
+          "target": "被敌方猎空蹭血后低头砸脚自奶（未禁疗任何敌人）",
+          "sleep_dart_state": "cd:9s",
+          "biotic_nade_state": "cd:12s"
+        },
+        {
+          "t": "01:03",
+          "alive_ratio": "4v5",
+          "ally_alive": 4,
+          "enemy_alive": 5,
+          "player_hp": 0,
+          "ult_charge_pct": 44,
+          "event_type": "player_death",
+          "killed_by": "Winston + Tracer",
+          "sleep_on_cd_when_dove": true,
+          "sleep_cd_remaining_sec": 5,
+          "nade_cd_remaining_sec": 8
+        }
+      ]
+    },
+    {
+      "fight_id": 2,
+      "time_range": "02:10 - 02:55",
+      "outcome": "WON",
+      "events": [
+        {
+          "t": "02:24",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "player_hp": 250,
+          "ult_charge_pct": 88,
+          "event_type": "biotic_nade_used",
+          "nade_usage": "offensive_anti",
+          "target": "敌方温斯顿跳落瞬间禁疗温斯顿+源氏2人",
+          "sleep_dart_state": "ready",
+          "biotic_nade_state": "cd:12s"
+        }
+      ]
+    },
+    {
+      "fight_id": 3,
+      "time_range": "03:30 - 04:15",
+      "outcome": "LOST",
+      "events": [
+        {
+          "t": "03:40",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "player_hp": 250,
+          "ult_charge_pct": 100,
+          "event_type": "overheal_tunnel",
+          "ally_hp_pct": 90,
+          "duration_sec": 4.5,
+          "exposed_enemy": "敌方安娜与半血源氏在长廊无掩体暴露",
+          "sleep_dart_state": "ready",
+          "biotic_nade_state": "ready"
+        },
+        {
+          "t": "03:52",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "player_hp": 220,
+          "ult_charge_pct": 100,
+          "event_type": "biotic_nade_used",
+          "nade_usage": "defensive_heal",
+          "target": "给还有75%血量的己方主T抬血",
+          "sleep_dart_state": "ready",
+          "biotic_nade_state": "cd:12s"
+        },
+        {
+          "t": "04:01",
+          "alive_ratio": "3v5",
+          "ally_alive": 3,
+          "enemy_alive": 5,
+          "dead_allies": ["己方主T莱因哈特", "己方索杰恩"],
+          "player_hp": 160,
+          "ult_charge_pct": 0,
+          "event_type": "ult_used",
+          "ult_target": "残血己方源氏",
+          "sleep_dart_state": "ready",
+          "biotic_nade_state": "cd:3s"
+        }
+      ]
+    },
+    {
+      "fight_id": 4,
+      "time_range": "05:10 - 05:50",
+      "outcome": "LOST",
+      "events": [
+        {
+          "t": "05:18",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "player_hp": 250,
+          "ult_charge_pct": 45,
+          "event_type": "sleep_dart_used",
+          "target": "远距离随手射向敌方后排走廊（未命中）",
+          "is_poke_lottery_sleep": true,
+          "sleep_dart_state": "cd:14s",
+          "biotic_nade_state": "ready"
+        },
+        {
+          "t": "05:25",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "player_hp": 90,
+          "ult_charge_pct": 52,
+          "event_type": "biotic_nade_used",
+          "nade_usage": "self_heal",
+          "target": "被敌方源氏镖中后砸脚自奶",
+          "sleep_dart_state": "cd:7s",
+          "biotic_nade_state": "cd:12s"
+        },
+        {
+          "t": "05:27",
+          "alive_ratio": "4v5",
+          "ally_alive": 4,
+          "enemy_alive": 5,
+          "player_hp": 0,
+          "ult_charge_pct": 53,
+          "event_type": "player_death",
+          "killed_by": "Genji",
+          "sleep_on_cd_when_dove": true,
+          "sleep_cd_remaining_sec": 5,
+          "nade_cd_remaining_sec": 10
+        }
+      ]
+    }
+  ]
+}
