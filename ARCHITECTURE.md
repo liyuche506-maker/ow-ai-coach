@@ -1,91 +1,98 @@
 # System Architecture & Design Philosophy (`ow-ai-coach`)
 
-## 1. Problem Statement & Core Challenges
+## 1. Core Architectural Split: Offline Agent Training vs. Online Local Runtime
 
-Building an automated AI coaching platform for *Overwatch 2* faces three primary bottlenecks:
+A key design principle of `ow-ai-coach` is strictly separating **Offline Coach Agent Training** from **Online Player Runtime**:
 
-1. **Closed Replay Telemetry & Input Friction**:
-   - Unlike *Counter-Strike 2* or *Dota 2*, Blizzard does not expose downloadable replay telemetry files (`.dem`). Replay codes only render inside the game engine.
-   - Requiring players to manually record 2GB MP4 files via OBS and upload them to a web form creates fatal user friction.
-2. **Multimodal Attention Bottleneck**:
-   - Feeding a raw 15-minute 60fps gameplay video directly into a generic Vision-Language Model (VLM) fails because the model cannot simultaneously track the top-right killfeed, bottom-left HP bar, bottom-right cooldown timers, and 3D positioning in a single pass.
-3. **"Correct Nonsense" (Generic AI Platitudes)**:
-   - Prompting a generic LLM with *"You are a Grandmaster Overwatch coach"* yields unactionable advice such as *"use cover more"*, *"improve your aim"*, or *"communicate with your team"*.
-   - Furthermore, evaluating a Gold/Diamond player against Overwatch Champions Series (OWCS) professional standards is counterproductive; Ground Truth rubrics must be stratified by **Hero** and **Skill Tier**.
-
----
-
-## 2. End-to-End Architecture
-
-To solve these challenges, `ow-ai-coach` decouples **Video Capture**, **Objective HUD Perception**, **Rank-Stratified Rubric Grounding**, and **Map-Reduce Match Aggregation**:
+* **Offline Training Phase (`owreplays.tv` Dataset)**:
+  - `owreplays.tv` is used **exclusively as an offline training and calibration dataset**, never as a runtime dependency for players.
+  - Because `owreplays.tv` provides thousands of public, rank-labeled (Bronze through Champion), hero-tagged first-person VODs alongside community/coaching comments, we use it to **train, calibrate, and evaluate** our `TimelineTranslator`, `Rubrics`, and `CoachAgent`.
+* **Online Runtime Phase (Local `Insights.gg` Integration)**:
+  - During actual gameplay on the user's PC, `owreplays.tv` is completely out of the loop.
+  - `Insights.gg` (via Overwolf Game Events Platform + NVIDIA NVENC) runs locally in the background, automatically recording the full match `.mp4` and logging exact event timestamps (`match_start`, `kill`, `death`, `match_end`) with zero manual hotkeys.
+  - Our local pipeline ingests the `Insights.gg` video + event bookmarks directly and runs the pre-trained Coach Agent.
 
 ```mermaid
-flowchart TD
-    subgraph Input_Layer ["1. Zero-Friction Input Layer"]
-        A1["Local Companion: Insights.gg / Overwolf GEP<br/>(Auto-records match MP4 + Kill/Death Timestamps)"]
-        A2["Cloud Bot: owreplays.tv<br/>(Replay Code -> Rendered YouTube POV URL)"]
+flowchart TB
+    subgraph Offline_Training ["Phase A: Offline Coach Agent Training (owreplays.tv)"]
+        T1["owreplays.tv Public API<br/>(Fetch Rank-Labeled VODs: e.g. Diamond vs. Master Ana)"]
+        T2["Batch Timeline Extraction<br/>(Convert Training VODs -> Labeled MatchTimeline Corpus)"]
+        T3["Agent Training & Rubric Calibration Loop<br/>1. Contrastive Metric Mining (Win vs. Loss / Diamond vs. Master)<br/>2. Threshold Calibration & Few-Shot Example Selection<br/>3. Evaluator Agent Judge (Specificity & HUD Grounding Score)"]
+        T4[("Calibrated Artifacts<br/>- rubrics/ana_diamond.json<br/>- Few-Shot Coaching Prompts<br/>- HUD Extraction Schema")]
+        T1 --> T2 --> T3 --> T4
     end
 
-    subgraph Perception_Layer ["2. Video-to-Timeline Translator (Map)"]
-        B1["Fight Window Slicer<br/>(Extract 20-40s windows around Teamfights)"]
-        B2["Fixed-Coordinate HUD Scanner (1-2 FPS)<br/>- Top-Right: Killfeed (5v5 -> 4v5)<br/>- Bottom-Left: HP & Anti-Heal status<br/>- Bottom-Center: Ultimate %<br/>- Bottom-Right: Ability Cooldown Icons"]
-        B3["Objective MatchTimeline.json<br/>(Zero subjective opinions; pure HUD telemetry)"]
+    subgraph Online_Runtime ["Phase B: Online Player Runtime (Local Insights.gg)"]
+        R1["Local Insights.gg Client<br/>(Auto-records Match MP4 + Kill/Death Timestamps)"]
+        R2["Fight Window Slicer & HUD Translator<br/>(Extracts MatchTimeline.json around Insights timestamps)"]
+        R3["Trained Coach Agent<br/>(Map-Reduce Audit using Calibrated Rubric)"]
+        R4["Post-Match Coaching Report"]
+        R1 --> R2 --> R3 --> R4
     end
 
-    subgraph Knowledge_Layer ["3. Rank-Stratified Rubric Engine"]
-        C1["Hero + Rank Rubrics (e.g. ana_diamond.json)<br/>- Distilled from high-level coaching VOD transcripts<br/>- Contrastive mining across tiers on owreplays.tv"]
-        C2["Negative Constraints<br/>(Strict banlist on generic platitudes)"]
-    end
-
-    subgraph Reasoning_Layer ["4. Match Aggregator & Coach Agent (Reduce)"]
-        D1["Micro Audit: Per-Fight Rule Verification<br/>(Timestamp + Alive Ratio + Cooldown State)"]
-        D2["Macro Aggregation: Cross-Fight Habit Detection<br/>(Offensive Nade %, Sleep-on-CD Death Rate, Wasted Nanos)"]
-        D3["Actionable Coaching Report"]
-    end
-
-    A1 --> B1
-    A2 --> B1
-    B1 --> B2 --> B3
-    B3 --> D1
-    C1 --> D1
-    C2 --> D3
-    D1 --> D2 --> D3
+    T4 -. "Loaded into Runtime" .-> R3
 ```
 
 ---
 
-## 3. Module Breakdown
+## 2. Problem Statement & Why Generic AI Coaching Fails
 
-### 3.1 Zero-Friction Input Layer
-Instead of writing custom screen-encoding drivers or touching game memory (which risks anti-cheat flags), we piggyback on established, whitelisted ecosystems:
-* **Local Real-Time Mode (`Insights.gg` / Overwolf GEP + NVIDIA NVENC)**:
-  - Automatically detects `Overwatch.exe` match start, kills, deaths, and match end without manual hotkeys.
-  - Saves full match recordings and event bookmark metadata locally, which our local watcher ingests automatically.
-* **Cloud / Dataset Mode (`owreplays.tv`)**:
-  - Provides a public JSON API (`/api/v2/replays`) and automated cloud recording bots that turn 6-character replay codes into rendered first-person YouTube VODs categorized by Hero, Map, and Skill Tier.
-  - Gemini's multimodal API ingests YouTube URLs directly without requiring local video downloads.
+Building an automated AI coaching platform for *Overwatch 2* faces three primary bottlenecks:
 
-### 3.2 Stage 1: Video-to-Timeline Translator (`agent/timeline_translator.py`)
-The VLM is strictly forbidden from giving coaching opinions during Stage 1. It acts solely as an **objective HUD logger**, sampling fixed screen regions at `1 FPS` per teamfight to produce `MatchTimeline.json`:
-* **Killfeed State**: Live player count (`5v5`, `4v5`, `3v5`) and recently eliminated teammates (`dead_allies`).
-* **Resource State**: Exact cooldown status of key abilities (`ready` vs `cd:Xs`) and Ultimate charge (`0-100%`) at the exact second an engagement or death occurs.
-* **Action Classification**: For example, classifying every Biotic Grenade throw as `offensive_anti`, `defensive_heal`, or `self_heal`.
+1. **Closed Replay Telemetry & Input Friction**:
+   - Unlike *Counter-Strike 2* or *Dota 2*, Blizzard does not expose downloadable replay telemetry files (`.dem`).
+   - At runtime, local `Insights.gg` auto-capture eliminates manual recording and uploading friction.
+2. **Multimodal Attention Bottleneck**:
+   - Feeding a raw 15-minute 60fps gameplay video directly into a generic Vision-Language Model (VLM) fails because the model cannot simultaneously track the top-right killfeed, bottom-left HP bar, bottom-right cooldown timers, and 3D positioning in a single pass.
+3. **"Correct Nonsense" (Generic AI Platitudes)**:
+   - Prompting a generic LLM with *"You are a Grandmaster Overwatch coach"* yields unactionable advice such as *"use cover more"*, *"improve your aim"*, or *"communicate with your team"*.
+   - Furthermore, evaluating a Gold/Diamond player against professional OWCS standards is counterproductive; Ground Truth rubrics must be calibrated specifically for the player's **Hero** and **Skill Tier**.
 
-### 3.3 Stage 2: Rank-Stratified Rubric Generation (`rubrics/`)
-Ground Truth differs drastically by skill tier:
-* **Gold/Platinum Focus**: Stopping 1v5 staggers, not dying with unspent cooldowns, basic Ultimate timing.
-* **Diamond Focus (`rubrics/ana_diamond.json`)**:
-  - `ANA_DIA_01` (**Biotic Grenade Value**): Shifting from passive defensive/self-heal nades to fight-winning offensive purple anti-nades (Target: $\ge 50\%$ offensive ratio).
-  - `ANA_DIA_02` (**Sleep Dart Discipline**): Never firing "lottery/poke" Sleep Darts at enemy tanks when enemy Dive/Flank threats (`Winston`, `Tracer`, `Genji`, `Doomfist`) have not committed their mobility cooldowns.
-  - `ANA_DIA_03` (**Nano Boost Fight Economy**): Never panic-investing Nano Boost when down $\ge 2$ players (e.g., `3v5` after main tank dies).
-  - `ANA_DIA_04` (**Healbot Tunnel Vision vs. Damage Weaving**): Avoiding continuous hard-scoped overhealing on $>85\%$ HP allies when enemy squishies are exposed in line of sight.
+---
 
-**How Rubrics Are Scaled Across Heroes & Ranks**:
-1. **Transcript Distillation**: Scraping categorized VOD review transcripts from professional coaches (e.g., Spilo Coaching's 1,000+ rank-tagged reviews) and converting recurring critiques into verifiable HUD `IF-THEN` rules.
-2. **Contrastive Timeline Mining**: Running the Timeline Translator across Grandmaster vs. Diamond VODs on `owreplays.tv` to extract empirical statistical thresholds.
+## 3. How Offline Coach Agent Training Works (`owreplays.tv`)
 
-### 3.4 Stage 3: Match-Level Aggregation & Anti-Platitude Auditing (`agent/coach_agent.py`)
-Analyzing isolated deaths misses systemic player habits. The Coach Agent performs a **Map-Reduce** evaluation:
-1. **Micro (Map)**: Audits every event in `Fight #1 ... #N` against the active rubric, requiring every critique to cite `[Timestamp] + [Alive Ratio] + [Ability Cooldown State]`.
-2. **Macro (Reduce)**: Aggregates metrics across all fights in the match to identify the player's top 2–3 systemic habits (e.g., *"In 2 out of 3 lost fights, you died to Dive within 9 seconds of firing a low-percentage poke Sleep Dart at the enemy tank"*).
-3. **Negative Constraint Guardrail**: Programmatically asserts that banned generic phrases (*"improve your aim"*, *"use cover"*, *"communicate more"*) never appear in the output.
+Since we do not fine-tune model weights directly, **"training the Coach Agent"** consists of **Data-Driven Rubric Calibration, Contrastive Rule Discovery, and Prompt/Few-Shot Optimization** using `owreplays.tv` VODs:
+
+### Step 1: Curating Rank-Stratified Training Batches (`scraper/owreplays_client.py`)
+We pull targeted cohorts from `owreplays.tv`:
+* **Target Cohort**: e.g., 10–20 **Diamond Ana** matches (split between Wins and Losses).
+* **Reference Upper Cohort**: e.g., 10 **Master / Grandmaster Ana** matches on the same map types.
+* **Coaching Ground Truth**: Matches with existing human VOD review comments or transcripts (e.g., Spilo Coaching VODs + `owreplays.tv` comment threads).
+
+### Step 2: Contrastive Timeline Mining
+We run `agent/timeline_translator.py` across the training cohorts to convert raw videos into structured `MatchTimeline.json` files and compute empirical distributions:
+* *Example Discovery*: Suppose across 10 Master Ana VODs, offensive purple anti-nades account for `58%` of all Biotic Grenades thrown, whereas in Diamond Ana losses, offensive anti-nades drop to `24%` (with `76%` spent on self-heals after taking poke damage or overhealing high-HP tanks).
+* This updates `ANA_DIA_01`'s empirical threshold in `rubrics/ana_diamond.json` (`offensive_anti_ratio < 0.45`).
+
+### Step 3: Iterative Evaluator-Optimizer Training Loop
+For each training match from `owreplays.tv`:
+1. **Forward Pass**: `TimelineTranslator` $\rightarrow$ `MatchTimeline.json` $\rightarrow$ `CoachAgent` produces a draft coaching report.
+2. **Critique / Loss Evaluation**: An **Evaluator Agent** grades the generated report against 4 criteria:
+   - **HUD Verification Accuracy**: Did the timestamped critique match the actual HUD state (`alive_ratio`, `cooldown_state`) in the video frame?
+   - **Zero-Platitude Compliance**: Did any generic advice slip through?
+   - **Outcome Alignment**: Do the identified habit root causes explain why Fight #X was won vs. lost?
+   - **Human Coach Alignment**: Does the AI diagnosis match human coaching feedback on that VOD?
+3. **Backward Update (Rubric & Prompt Mutation)**: We refine the HUD extraction prompt, adjust rubric rule thresholds, and store validated high-precision critiques as **Few-Shot Exemplars** for the Coach Agent.
+
+---
+
+## 4. Online Runtime Pipeline (Local `Insights.gg`)
+
+Once the Coach Agent and Rubrics are trained offline, the player's local workflow is completely automatic:
+
+### 4.1 Local Ingestion (`Insights.gg` Watcher)
+* `Insights.gg` automatically records the match and writes local metadata containing exact timestamps for every `kill`, `death`, and `round_end`.
+* Instead of scanning an entire 15-minute video blindly, our local slicer extracts **20–40 second teamfight windows** anchored around `Insights.gg`'s event timestamps.
+
+### 4.2 Stage 1: Video-to-Timeline Translator (`agent/timeline_translator.py`)
+The VLM acts strictly as an **objective HUD logger** (`1–2 FPS` around teamfights), inspecting four fixed 16:9 regions to produce `MatchTimeline.json`:
+* **Top-Right (Killfeed)**: Live alive count (`5v5`, `4v5`, `3v5`) and `dead_allies`.
+* **Bottom-Left (HP Bar)**: Player HP (`0–250`) and status effects.
+* **Bottom-Center (Ultimate)**: Ultimate charge (`0–100%`).
+* **Bottom-Right (Abilities)**: Sleep Dart (`ready` vs `cd:Xs`) and Biotic Grenade classification (`offensive_anti`, `defensive_heal`, `self_heal`).
+
+### 4.3 Stage 2: Match-Level Map-Reduce Coach (`agent/coach_agent.py`)
+1. **Micro Audit (Map)**: Evaluates each teamfight against the pre-trained rubric (`rubrics/ana_diamond.json`), requiring every critique to cite `[Timestamp] + [Alive Ratio] + [Cooldown State]`.
+2. **Macro Aggregation (Reduce)**: Aggregates metrics across all fights in the match to surface the player's top 2–3 recurring habit root causes.
+3. **Negative Constraint Guardrail**: Programmatically blocks any output containing banned generic platitudes.

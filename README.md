@@ -1,25 +1,30 @@
 # OW2 AI Coach Agent (`ow-ai-coach`)
 
-An automated Overwatch 2 VOD analysis & coaching pipeline that eliminates generic AI platitudes by separating **HUD-Grounded Timeline Extraction** from **Rank-Specific Rubric Evaluation & Match Aggregation**.
+An automated *Overwatch 2* VOD analysis & coaching platform that eliminates generic AI platitudes by separating **HUD-Grounded Timeline Extraction** from **Rank-Specific Rubric Evaluation & Match Aggregation**.
 
-## Architecture
+## Two-Phase Workflow: Offline Training vs. Online Runtime
 
-See [ARCHITECTURE.md](ARCHITECTURE.md) for the full system design, zero-friction input pipelines (`Insights.gg` & `owreplays.tv`), HUD-grounded timeline translation, rank-stratified rubric generation, and Map-Reduce match coaching architecture.
+* **Phase A — Offline Coach Agent Training (`owreplays.tv`)**:
+  Uses public, rank-labeled VODs from `owreplays.tv` as an **offline training and calibration dataset** to mine statistical thresholds across ranks (e.g., Diamond vs. Master Ana), refine HUD extraction accuracy, and iteratively train the `Rubrics` and `CoachAgent`.
+* **Phase B — Online Player Runtime (Local `Insights.gg`)**:
+  During actual gameplay, players do **not** use `owreplays.tv`. `Insights.gg` runs locally in the background, automatically recording matches and marking kill/death timestamps. The pre-trained Coach Agent ingests the local `Insights.gg` output directly to generate post-match coaching reports.
 
-1. **Data / Replay Ingestion (`scraper/owreplays_client.py`)**
-   - Polls public replay metadata and rendered first-person YouTube VOD links from `owreplays.tv` (or local `Insights.gg` auto-recorded matches).
-2. **Stage 1: Video-to-Timeline Translator (`agent/timeline_translator.py`)**
-   - Uses multimodal video understanding (`1 FPS` HUD region tracking: Killfeed alive ratio, HP bar, Ultimate meter, Ability cooldown icons) to convert raw gameplay into an objective `MatchTimeline.json`.
-3. **Stage 2: Rubric-Driven Match Aggregator & Coach (`agent/coach_agent.py`)**
-   - Evaluates each teamfight (`Map`) and aggregates whole-match systemic habits (`Reduce`) against rank- and hero-specific rubrics (`rubrics/ana_diamond.json`).
-   - Enforces negative constraints against generic advice ("find cover", "aim better").
+See [ARCHITECTURE.md](ARCHITECTURE.md) for the complete system architecture and training loop design.
 
-## Quick Start
+## Repository Structure
+
+* `scraper/owreplays_client.py` — Fetches rank-labeled training VODs and YouTube POV links from `owreplays.tv`.
+* `data/diamond_ana_samples.json` — Curated offline training batch of Diamond Ana VODs from `owreplays.tv`.
+* `rubrics/ana_diamond.json` — Calibrated Diamond Ana evaluation rubric & anti-platitude guardrails.
+* `agent/timeline_translator.py` — Stage 1: Converts raw gameplay video into objective HUD `MatchTimeline.json`.
+* `agent/coach_agent.py` — Stage 2: Runs per-fight micro audits and whole-match macro habit aggregation.
+
+## Quick Start (Offline Training & Prototype Test)
 
 ```bash
-# 1. Fetch Diamond Ana replay samples & YouTube VOD links from owreplays.tv
+# 1. Fetch Diamond Ana training VOD samples from owreplays.tv
 python3 scraper/owreplays_client.py
 
-# 2. Run the Coach Agent on a structured match timeline
+# 2. Run the Coach Agent against a structured match timeline
 python3 agent/coach_agent.py data/sample_timeline_MFTXPE.json
 ```
