@@ -1,0 +1,86 @@
+{
+  "diamond_ana": [
+    {
+      "replay_code": "QN4070",
+      "title": "goated ass ana game",
+      "player": "Ben",
+      "rank": "Diamond 3",
+      "map": "Hollywood",
+      "outcome": "win",
+      "duration": "00:24:08",
+      "youtube_url": "https://www.youtube.com/watch?v=fCLHZO7fsZ8"
+    },
+    {
+      "replay_code": "V89RSK",
+      "title": "one of the most devestating c9s on an AMAZING game",
+      "player": "Ben",
+      "rank": "Diamond 3",
+      "map": "Lijiang Tower",
+      "outcome": "win",
+      "duration": "00:16:24",
+      "youtube_url": "https://www.youtube.com/watch?v=D-Bsj0aNoPo"
+    },
+    {
+      "replay_code": "HZJK6E",
+      "title": "뉴정시 아나 플레이",
+      "player": "CN7",
+      "rank": "Diamond 4",
+      "map": "New Junk City",
+      "outcome": "win",
+      "duration": "00:14:15",
+      "youtube_url": "https://www.youtube.com/watch?v=hGWJHwOj7zc"
+    },
+    {
+      "replay_code": "D86HQF",
+      "title": "19-1 ana type shit",
+      "player": "Ben",
+      "rank": "Diamond 3",
+      "map": "New Queen Street",
+      "outcome": "win",
+      "duration": "00:10:44",
+      "youtube_url": "https://www.youtube.com/watch?v=Z6TserShEPY"
+    }
+  ],
+  "master_gm_ana": [
+    {
+      "replay_code": "SW5Y5Y",
+      "title": "김이준 아픈 손가락들 데리고 이기기 힘드네",
+      "player": "차분한다홍마법사",
+      "rank": "Grandmaster 5",
+      "map": "Adlersbrunn",
+      "outcome": "win",
+      "duration": "00:19:48",
+      "youtube_url": "https://www.youtube.com/watch?v=859IM0xMiCc"
+    },
+    {
+      "replay_code": "HSA58Z",
+      "title": "deathless ana",
+      "player": "trevor",
+      "rank": "Grandmaster 5",
+      "map": "Havana",
+      "outcome": "win",
+      "duration": "00:14:39",
+      "youtube_url": "https://www.youtube.com/watch?v=KR55aTHtEfk"
+    },
+    {
+      "replay_code": "0AJTQ5",
+      "title": "Ana MasterClass",
+      "player": "R1SE",
+      "rank": "Grandmaster 5",
+      "map": "New Queen Street",
+      "outcome": "win",
+      "duration": "00:08:26",
+      "youtube_url": "https://www.youtube.com/watch?v=e3QqGz0gRCQ"
+    },
+    {
+      "replay_code": "CP9GCK",
+      "title": "Ana game vs Emongg, Somnus, Beaver",
+      "player": "Art",
+      "rank": "Grandmaster 3",
+      "map": "Runasapi",
+      "outcome": "win",
+      "duration": "00:10:32",
+      "youtube_url": "https://www.youtube.com/watch?v=PFR-W-_vrQ4"
+    }
+  ]
+}
