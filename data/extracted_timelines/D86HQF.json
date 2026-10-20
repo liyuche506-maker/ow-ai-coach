@@ -1,0 +1,263 @@
+{
+  "match_meta": {
+    "replay_code": "D86HQF",
+    "title": "19-1 ana type shit",
+    "player": "Ben",
+    "hero": "Ana",
+    "rank": "Diamond 3",
+    "map": "New Queen Street",
+    "outcome": "win",
+    "duration": "00:10:44",
+    "youtube_url": "https://www.youtube.com/watch?v=Z6TserShEPY",
+    "ally_comp_observed": [
+      "Mauga",
+      "Sojourn",
+      "Tracer",
+      "Kiriko",
+      "Ana"
+    ],
+    "enemy_threats": [
+      "D.Va",
+      "Reaper",
+      "Wrecking Ball",
+      "Pharah"
+    ]
+  },
+  "fights": [
+    {
+      "fight_id": 1,
+      "time_range": "00:45 - 01:45",
+      "outcome": "LOST",
+      "events": [
+        {
+          "t": "01:21",
+          "alive_ratio": "3v4",
+          "ally_alive": 3,
+          "enemy_alive": 4,
+          "dead_allies": [
+            "Mousi",
+            "Suguri"
+          ],
+          "player_hp": 250,
+          "ult_charge_pct": 43,
+          "event_type": "biotic_nade_used",
+          "target": "Warbirdz Gym upper window where enemy ranged DPS is positioned",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "offensive_anti",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 100,
+          "duration_sec": 0.0,
+          "exposed_enemy": null
+        },
+        {
+          "t": "01:35",
+          "alive_ratio": "4v4",
+          "ally_alive": 4,
+          "enemy_alive": 4,
+          "dead_allies": [
+            "Suguri"
+          ],
+          "player_hp": 250,
+          "ult_charge_pct": 65,
+          "event_type": "biotic_nade_used",
+          "target": "Enemy front line pushing robot beneath the bridge",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "offensive_anti",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 90,
+          "duration_sec": 0.0,
+          "exposed_enemy": null
+        }
+      ]
+    },
+    {
+      "fight_id": 2,
+      "time_range": "01:50 - 02:40",
+      "outcome": "WON",
+      "events": [
+        {
+          "t": "01:53",
+          "alive_ratio": "4v5",
+          "ally_alive": 4,
+          "enemy_alive": 5,
+          "dead_allies": [
+            "Suguri"
+          ],
+          "player_hp": 112,
+          "ult_charge_pct": 79,
+          "event_type": "biotic_nade_used",
+          "target": "Self and ally Mauga at low health during enemy push",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "self_heal",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 45,
+          "duration_sec": 0.0,
+          "exposed_enemy": null
+        },
+        {
+          "t": "02:20",
+          "alive_ratio": "5v4",
+          "ally_alive": 5,
+          "enemy_alive": 4,
+          "dead_allies": [],
+          "player_hp": 195,
+          "ult_charge_pct": 100,
+          "event_type": "ult_used",
+          "target": "Mauga initiating Cage Fight on point",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": "Mauga",
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 80,
+          "duration_sec": 0.0,
+          "exposed_enemy": null
+        }
+      ]
+    },
+    {
+      "fight_id": 3,
+      "time_range": "03:10 - 04:50",
+      "outcome": "WON",
+      "events": [
+        {
+          "t": "03:14",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 238,
+          "ult_charge_pct": 37,
+          "event_type": "sleep_dart_used",
+          "target": "Flanking Reaper inside the gym",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 100,
+          "duration_sec": 0.0,
+          "exposed_enemy": null
+        },
+        {
+          "t": "03:22",
+          "alive_ratio": "5v4",
+          "ally_alive": 5,
+          "enemy_alive": 4,
+          "dead_allies": [],
+          "player_hp": 48,
+          "ult_charge_pct": 47,
+          "event_type": "biotic_nade_used",
+          "target": "Sleeping Reaper and self at critical health",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "self_heal",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 100,
+          "duration_sec": 0.0,
+          "exposed_enemy": null
+        },
+        {
+          "t": "04:08",
+          "alive_ratio": "5v4",
+          "ally_alive": 5,
+          "enemy_alive": 4,
+          "dead_allies": [],
+          "player_hp": 250,
+          "ult_charge_pct": 100,
+          "event_type": "ult_used",
+          "target": "Mauga brawling enemy core in forward streets",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": "Mauga",
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 85,
+          "duration_sec": 0.0,
+          "exposed_enemy": null
+        },
+        {
+          "t": "04:39",
+          "alive_ratio": "5v4",
+          "ally_alive": 5,
+          "enemy_alive": 4,
+          "dead_allies": [],
+          "player_hp": 250,
+          "ult_charge_pct": 28,
+          "event_type": "sleep_dart_used",
+          "target": "Wrecking Ball rolling through lobby corridor",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 100,
+          "duration_sec": 0.0,
+          "exposed_enemy": null
+        }
+      ]
+    },
+    {
+      "fight_id": 4,
+      "time_range": "05:05 - 05:27",
+      "outcome": "LOST",
+      "events": [
+        {
+          "t": "05:24",
+          "alive_ratio": "3v4",
+          "ally_alive": 3,
+          "enemy_alive": 4,
+          "dead_allies": [
+            "Suguri",
+            "Siquiru"
+          ],
+          "player_hp": 0,
+          "ult_charge_pct": 77,
+          "event_type": "player_death",
+          "target": "Eliminated by Mutun while exiting gym corridor",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": "Mutun",
+          "sleep_on_cd_when_dove": true,
+          "sleep_cd_remaining_sec": 3,
+          "ally_hp_pct": 60,
+          "duration_sec": 0.0,
+          "exposed_enemy": null
+        }
+      ]
+    }
+  ],
+  "_token_usage": {
+    "promptTokenCount": 28238,
+    "candidatesTokenCount": 2453,
+    "totalTokenCount": 32306,
+    "promptTokensDetails": [
+      {
+        "modality": "VIDEO",
+        "tokenCount": 27301
+      },
+      {
+        "modality": "TEXT",
+        "tokenCount": 937
+      }
+    ],
+    "thoughtsTokenCount": 1615,
+    "serviceTier": "standard"
+  }
+}

@@ -1,20 +1,15 @@
 """Offline Coach Agent Training & Rubric Calibration Pipeline.
 
-Uses public rank-labeled VOD cohorts from owreplays.tv (Diamond Ana vs. Master/GM Ana)
-to calibrate empirical rubric thresholds and evaluate the Coach Agent's diagnostic precision.
-
-Note on Video Ingestion Compliance:
-- Direct scraping/downloading of YouTube video streams via third-party tools triggers
-  YouTube's SABR / anti-bot protections and is intentionally NOT bypassed.
-- Instead, live video extraction uses Google Gemini's official first-party YouTube URL
-  ingestion (`file_uri=youtube_url` via `google-genai` SDK with `GEMINI_API_KEY`),
-  which processes public YouTube videos natively inside Google's infrastructure.
+Uses public rank-labeled VOD cohorts from owreplays.tv (Diamond Ana vs. Grandmaster Ana)
+to extract real HUD timelines via Gemini's native YouTube ingestion, compute contrastive
+statistical thresholds across ranks, calibrate rubrics/ana_diamond.json, and evaluate
+Coach Agent diagnostic precision.
 """
 
 import json
-import os
 import statistics
 import sys
+import time
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -22,62 +17,10 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT_DIR))
 
 from agent.coach_agent import evaluate_timeline_with_rubric, render_markdown_report
-from scraper.owreplays_client import (
-    BASE_URL,
-    HERO_ANA_ID,
-    _get_json,
-    fetch_replay_vod_cameras,
-)
-
-DIAMOND_TIERS = [21, 22, 23, 24, 25]
-MASTER_GM_TIERS = [26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
+from agent.timeline_translator import load_api_key, translate_vod_with_gemini
 
 
-def fetch_contrastive_cohorts(per_cohort: int = 4) -> Dict[str, List[Dict[str, Any]]]:
-    """Fetch Diamond Ana vs. Master/GM Ana cohorts from owreplays.tv public API."""
-    maps_data = _get_json(f"{BASE_URL}/api/v2/maps")
-    tiers_data = _get_json(f"{BASE_URL}/api/v2/tiers")
-    map_lookup = {m["ID"]: m["map"] for m in maps_data}
-    tier_lookup = {t["ID"]: t["title"] for t in tiers_data}
-
-    cohorts: Dict[str, List[Dict[str, Any]]] = {
-        "diamond_ana": [],
-        "master_gm_ana": [],
-    }
-
-    for key, tier_ids in [
-        ("diamond_ana", DIAMOND_TIERS),
-        ("master_gm_ana", MASTER_GM_TIERS),
-    ]:
-        tiers_str = ",".join(str(t) for t in tier_ids)
-        url = f"{BASE_URL}/api/v2/replays?heroes={HERO_ANA_ID}&tiers={tiers_str}"
-        data = _get_json(url)
-        for r in data.get("replays", []):
-            if not r.get("HasVod") or r.get("Heroes") != [HERO_ANA_ID]:
-                continue
-            code = r["Code"]
-            vods = fetch_replay_vod_cameras(code)
-            if not vods:
-                continue
-            cohorts[key].append(
-                {
-                    "replay_code": code,
-                    "title": r.get("Title"),
-                    "player": r.get("Player"),
-                    "rank": tier_lookup.get(r.get("Tier"), str(r.get("Tier"))),
-                    "map": map_lookup.get(r.get("Map"), str(r.get("Map"))),
-                    "outcome": r.get("Outcome"),
-                    "duration": r.get("Duration"),
-                    "youtube_url": vods[0]["youtube_url"],
-                }
-            )
-            if len(cohorts[key]) >= per_cohort:
-                break
-
-    return cohorts
-
-
-def compute_timeline_feature_vector(timeline: Dict[str, Any]) -> Dict[str, float]:
+def compute_timeline_feature_vector(timeline: Dict[str, Any]) -> Dict[str, Any]:
     """Extract normalized HUD behavior metrics from a single MatchTimeline."""
     fights = timeline.get("fights", [])
     nades = [
@@ -89,6 +32,23 @@ def compute_timeline_feature_vector(timeline: Dict[str, Any]) -> Dict[str, float
     offensive_nade_ratio = (
         sum(1 for n in nades if n.get("nade_usage") == "offensive_anti") / len(nades)
         if nades
+        else 0.0
+    )
+    self_heal_nade_ratio = (
+        sum(1 for n in nades if n.get("nade_usage") == "self_heal") / len(nades)
+        if nades
+        else 0.0
+    )
+
+    sleeps = [
+        ev
+        for f in fights
+        for ev in f.get("events", [])
+        if ev.get("event_type") == "sleep_dart_used"
+    ]
+    poke_lottery_sleep_ratio = (
+        sum(1 for s in sleeps if s.get("is_poke_lottery_sleep")) / len(sleeps)
+        if sleeps
         else 0.0
     )
 
@@ -121,30 +81,41 @@ def compute_timeline_feature_vector(timeline: Dict[str, Any]) -> Dict[str, float
         else 0.0
     )
 
+    overheals = [
+        ev
+        for f in fights
+        for ev in f.get("events", [])
+        if ev.get("event_type") == "overheal_tunnel"
+    ]
+
     return {
+        "fights_count": len(fights),
+        "total_nades": len(nades),
         "offensive_nade_ratio": round(offensive_nade_ratio, 3),
+        "self_heal_nade_ratio": round(self_heal_nade_ratio, 3),
+        "total_sleeps": len(sleeps),
+        "poke_lottery_sleep_ratio": round(poke_lottery_sleep_ratio, 3),
+        "total_deaths": len(deaths),
         "sleep_cd_death_rate": round(sleep_cd_death_rate, 3),
+        "total_ults": len(ults),
         "wasted_ult_rate": round(wasted_ult_rate, 3),
+        "overheal_tunnel_count": len(overheals),
     }
 
 
 def evaluator_judge_score(
     report_md: str, evaluation: Dict[str, Any], rubric: Dict[str, Any]
 ) -> Dict[str, Any]:
-    """Evaluator Judge: scores a Coach Agent output on 4 strict quality dimensions."""
+    """Evaluator Judge: scores a Coach Agent output on 3 strict quality dimensions."""
     critiques = evaluation.get("timeline_critiques", [])
 
-    # 1. HUD Citation Completeness: Every critique must cite [MM:SS] and alive ratio (XvY)
     hud_grounded_count = sum(
-        1
-        for c in critiques
-        if "[" in c["diagnosis"] and "v" in c["diagnosis"]
+        1 for c in critiques if "[" in c["diagnosis"] and "v" in c["diagnosis"]
     )
     hud_grounding_score = (
         hud_grounded_count / len(critiques) if critiques else 1.0
     )
 
-    # 2. Zero-Platitude Compliance
     platitude_violations = [
         p
         for p in rubric.get("forbidden_platitudes", [])
@@ -152,7 +123,6 @@ def evaluator_judge_score(
     ]
     zero_platitude_score = 1.0 if not platitude_violations else 0.0
 
-    # 3. Macro-to-Micro Consistency: Do top habits reference concrete numerical counts?
     habits = evaluation.get("top_habit_root_causes", [])
     quantified_habits = sum(
         1 for h in habits if any(ch.isdigit() for ch in h)
@@ -162,7 +132,8 @@ def evaluator_judge_score(
     )
 
     overall = round(
-        (hud_grounding_score + zero_platitude_score + habit_quantification_score) / 3.0,
+        (hud_grounding_score + zero_platitude_score + habit_quantification_score)
+        / 3.0,
         3,
     )
     return {
@@ -174,41 +145,105 @@ def evaluator_judge_score(
     }
 
 
-def run_offline_training_iteration() -> Dict[str, Any]:
-    """Run one complete offline training & calibration pass."""
-    cohorts_path = ROOT_DIR / "data" / "training_cohorts_ana.json"
-    cohorts = fetch_contrastive_cohorts(per_cohort=4)
-    cohorts_path.write_text(
-        json.dumps(cohorts, indent=2, ensure_ascii=False), encoding="utf-8"
+def run_live_contrastive_training() -> Dict[str, Any]:
+    """Extract real HUD timelines from Diamond vs. GM Ana VODs on owreplays.tv and calibrate rubric."""
+    key = load_api_key()
+    extracted_dir = ROOT_DIR / "data" / "extracted_timelines"
+    extracted_dir.mkdir(parents=True, exist_ok=True)
+
+    diamond_samples = json.loads(
+        (ROOT_DIR / "data" / "diamond_ana_samples.json").read_text(encoding="utf-8")
     )
+    cohorts = json.loads(
+        (ROOT_DIR / "data" / "training_cohorts_ana.json").read_text(encoding="utf-8")
+    )
+
+    # Select 2 Diamond matches (1 Loss MFTXPE + 1 Win D86HQF) and 2 Grandmaster matches (HSA58Z + 0AJTQ5)
+    target_matches = [
+        m for m in diamond_samples if m["replay_code"] in ("MFTXPE", "D86HQF")
+    ] + [
+        m for m in cohorts["master_gm_ana"] if m["replay_code"] in ("HSA58Z", "0AJTQ5")
+    ]
 
     rubric_path = ROOT_DIR / "rubrics" / "ana_diamond.json"
     rubric = json.loads(rubric_path.read_text(encoding="utf-8"))
 
-    sample_timeline_path = ROOT_DIR / "data" / "sample_timeline_MFTXPE.json"
-    diamond_loss_timeline = json.loads(
-        sample_timeline_path.read_text(encoding="utf-8")
+    results_by_match: Dict[str, Any] = {}
+    diamond_vectors: List[Dict[str, Any]] = []
+    gm_vectors: List[Dict[str, Any]] = []
+
+    for match in target_matches:
+        code = match["replay_code"]
+        cache_file = extracted_dir / f"{code}.json"
+        if cache_file.exists():
+            timeline = json.loads(cache_file.read_text(encoding="utf-8"))
+        else:
+            print(f"[Training] Extracting live HUD timeline from YouTube VOD for {code} ({match['rank']})...")
+            timeline = translate_vod_with_gemini(
+                match,
+                start_offset="30s",
+                end_offset="330s",
+                fps=1.0,
+                api_key=key,
+            )
+            cache_file.write_text(
+                json.dumps(timeline, indent=2, ensure_ascii=False), encoding="utf-8"
+            )
+            time.sleep(2)
+
+        vec = compute_timeline_feature_vector(timeline)
+        eval_out = evaluate_timeline_with_rubric(timeline, rubric)
+        report_md = render_markdown_report(eval_out, rubric)
+        judge = evaluator_judge_score(report_md, eval_out, rubric)
+
+        # Save individual coaching report
+        report_file = extracted_dir / f"{code}_coach_report.md"
+        report_file.write_text(report_md, encoding="utf-8")
+
+        if "Grandmaster" in match["rank"] or "Master" in match["rank"]:
+            gm_vectors.append(vec)
+        else:
+            diamond_vectors.append(vec)
+
+        results_by_match[code] = {
+            "rank": match["rank"],
+            "map": match["map"],
+            "outcome": match["outcome"],
+            "features": vec,
+            "evaluator_judge": judge,
+        }
+
+    gm_mean_offensive_nade = round(
+        statistics.mean(v["offensive_nade_ratio"] for v in gm_vectors), 3
+    )
+    dia_mean_offensive_nade = round(
+        statistics.mean(v["offensive_nade_ratio"] for v in diamond_vectors), 3
+    )
+    gm_mean_poke_sleep = round(
+        statistics.mean(v["poke_lottery_sleep_ratio"] for v in gm_vectors), 3
+    )
+    dia_mean_poke_sleep = round(
+        statistics.mean(v["poke_lottery_sleep_ratio"] for v in diamond_vectors), 3
     )
 
-    features = compute_timeline_feature_vector(diamond_loss_timeline)
-    evaluation = evaluate_timeline_with_rubric(diamond_loss_timeline, rubric)
-    report_md = render_markdown_report(evaluation, rubric)
-    judge_result = evaluator_judge_score(report_md, evaluation, rubric)
-
-    summary = {
-        "training_cohorts_fetched": {
-            "diamond_ana_count": len(cohorts["diamond_ana"]),
-            "master_gm_ana_count": len(cohorts["master_gm_ana"]),
-            "diamond_codes": [c["replay_code"] for c in cohorts["diamond_ana"]],
-            "master_gm_codes": [c["replay_code"] for c in cohorts["master_gm_ana"]],
+    calibration_summary = {
+        "matches_processed": results_by_match,
+        "contrastive_findings": {
+            "gm_mean_offensive_nade_ratio": gm_mean_offensive_nade,
+            "diamond_mean_offensive_nade_ratio": dia_mean_offensive_nade,
+            "gm_mean_poke_lottery_sleep_ratio": gm_mean_poke_sleep,
+            "diamond_mean_poke_lottery_sleep_ratio": dia_mean_poke_sleep,
         },
-        "live_gemini_api_key_detected": bool(os.environ.get("GEMINI_API_KEY")),
-        "sample_feature_vector_MFTXPE": features,
-        "evaluator_judge_metrics": judge_result,
     }
-    return summary
+
+    out_summary_path = ROOT_DIR / "data" / "training_calibration_summary.json"
+    out_summary_path.write_text(
+        json.dumps(calibration_summary, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    return calibration_summary
 
 
 if __name__ == "__main__":
-    result = run_offline_training_iteration()
-    print(json.dumps(result, indent=2, ensure_ascii=False))
+    summary = run_live_contrastive_training()
+    print(json.dumps(summary, indent=2, ensure_ascii=False))

@@ -1,0 +1,110 @@
+{
+  "matches_processed": {
+    "D86HQF": {
+      "rank": "Diamond 3",
+      "map": "New Queen Street",
+      "outcome": "win",
+      "features": {
+        "fights_count": 4,
+        "total_nades": 4,
+        "offensive_nade_ratio": 0.5,
+        "self_heal_nade_ratio": 0.5,
+        "total_sleeps": 2,
+        "poke_lottery_sleep_ratio": 0.0,
+        "total_deaths": 1,
+        "sleep_cd_death_rate": 1.0,
+        "total_ults": 2,
+        "wasted_ult_rate": 0.0,
+        "overheal_tunnel_count": 0
+      },
+      "evaluator_judge": {
+        "overall_score": 1.0,
+        "hud_grounding_score": 1.0,
+        "zero_platitude_score": 1.0,
+        "habit_quantification_score": 1.0,
+        "critique_count": 5
+      }
+    },
+    "MFTXPE": {
+      "rank": "Diamond 4",
+      "map": "Colosseo",
+      "outcome": "loss",
+      "features": {
+        "fights_count": 5,
+        "total_nades": 5,
+        "offensive_nade_ratio": 0.8,
+        "self_heal_nade_ratio": 0.0,
+        "total_sleeps": 4,
+        "poke_lottery_sleep_ratio": 0.25,
+        "total_deaths": 0,
+        "sleep_cd_death_rate": 0.0,
+        "total_ults": 2,
+        "wasted_ult_rate": 0.0,
+        "overheal_tunnel_count": 0
+      },
+      "evaluator_judge": {
+        "overall_score": 1.0,
+        "hud_grounding_score": 1.0,
+        "zero_platitude_score": 1.0,
+        "habit_quantification_score": 1.0,
+        "critique_count": 3
+      }
+    },
+    "HSA58Z": {
+      "rank": "Grandmaster 5",
+      "map": "Havana",
+      "outcome": "win",
+      "features": {
+        "fights_count": 4,
+        "total_nades": 6,
+        "offensive_nade_ratio": 0.333,
+        "self_heal_nade_ratio": 0.333,
+        "total_sleeps": 2,
+        "poke_lottery_sleep_ratio": 0.5,
+        "total_deaths": 0,
+        "sleep_cd_death_rate": 0.0,
+        "total_ults": 2,
+        "wasted_ult_rate": 0.5,
+        "overheal_tunnel_count": 0
+      },
+      "evaluator_judge": {
+        "overall_score": 1.0,
+        "hud_grounding_score": 1.0,
+        "zero_platitude_score": 1.0,
+        "habit_quantification_score": 1.0,
+        "critique_count": 4
+      }
+    },
+    "0AJTQ5": {
+      "rank": "Grandmaster 5",
+      "map": "New Queen Street",
+      "outcome": "win",
+      "features": {
+        "fights_count": 4,
+        "total_nades": 7,
+        "offensive_nade_ratio": 0.286,
+        "self_heal_nade_ratio": 0.143,
+        "total_sleeps": 3,
+        "poke_lottery_sleep_ratio": 0.667,
+        "total_deaths": 2,
+        "sleep_cd_death_rate": 0.5,
+        "total_ults": 1,
+        "wasted_ult_rate": 0.0,
+        "overheal_tunnel_count": 0
+      },
+      "evaluator_judge": {
+        "overall_score": 1.0,
+        "hud_grounding_score": 1.0,
+        "zero_platitude_score": 1.0,
+        "habit_quantification_score": 1.0,
+        "critique_count": 3
+      }
+    }
+  },
+  "contrastive_findings": {
+    "gm_mean_offensive_nade_ratio": 0.309,
+    "diamond_mean_offensive_nade_ratio": 0.65,
+    "gm_mean_poke_lottery_sleep_ratio": 0.584,
+    "diamond_mean_poke_lottery_sleep_ratio": 0.125
+  }
+}

@@ -1,0 +1,301 @@
+{
+  "match_meta": {
+    "replay_code": "MFTXPE",
+    "title": "Flanking Ana",
+    "player": "DRE",
+    "hero": "Ana",
+    "rank": "Diamond 4",
+    "map": "Colosseo",
+    "outcome": "loss",
+    "duration": "00:12:06",
+    "youtube_url": "https://www.youtube.com/watch?v=PRih_BFalY0",
+    "ally_comp_observed": [
+      "Winston",
+      "Genji",
+      "Tracer",
+      "Kiriko",
+      "Ana"
+    ],
+    "enemy_threats": [
+      "Roadhog",
+      "Ashe",
+      "Cassidy",
+      "Kiriko",
+      "Baptiste"
+    ]
+  },
+  "fights": [
+    {
+      "fight_id": 1,
+      "time_range": "00:30 - 01:06",
+      "outcome": "LOST",
+      "events": [
+        {
+          "t": "00:34",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 250,
+          "ult_charge_pct": 0,
+          "event_type": "biotic_nade_used",
+          "target": "Enemy frontline in central corridor opening",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "offensive_anti",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        },
+        {
+          "t": "00:36",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 250,
+          "ult_charge_pct": 0,
+          "event_type": "sleep_dart_used",
+          "target": "Long range poke down main archway choke",
+          "is_poke_lottery_sleep": true,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        }
+      ]
+    },
+    {
+      "fight_id": 2,
+      "time_range": "01:10 - 02:22",
+      "outcome": "WON",
+      "events": [
+        {
+          "t": "01:17",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 250,
+          "ult_charge_pct": 52,
+          "event_type": "biotic_nade_used",
+          "target": "Enemy Roadhog and frontline under bridge",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "offensive_anti",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        },
+        {
+          "t": "01:20",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 250,
+          "ult_charge_pct": 56,
+          "event_type": "sleep_dart_used",
+          "target": "Roadhog crossing the street",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        },
+        {
+          "t": "01:33",
+          "alive_ratio": "5v4",
+          "ally_alive": 5,
+          "enemy_alive": 4,
+          "dead_allies": [],
+          "player_hp": 241,
+          "ult_charge_pct": 66,
+          "event_type": "biotic_nade_used",
+          "target": "Friendly Winston engaging contested robot",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "defensive_heal",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        },
+        {
+          "t": "01:52",
+          "alive_ratio": "5v4",
+          "ally_alive": 5,
+          "enemy_alive": 4,
+          "dead_allies": [],
+          "player_hp": 250,
+          "ult_charge_pct": 87,
+          "event_type": "biotic_nade_used",
+          "target": "Clustered fight around central robot path",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "offensive_anti",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        },
+        {
+          "t": "02:17",
+          "alive_ratio": "5v4",
+          "ally_alive": 5,
+          "enemy_alive": 4,
+          "dead_allies": [],
+          "player_hp": 115,
+          "ult_charge_pct": 100,
+          "event_type": "ult_used",
+          "target": "Friendly Winston entering enemy backline",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": "Winston",
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        }
+      ]
+    },
+    {
+      "fight_id": 3,
+      "time_range": "02:23 - 03:10",
+      "outcome": "WON",
+      "events": [
+        {
+          "t": "02:26",
+          "alive_ratio": "5v4",
+          "ally_alive": 5,
+          "enemy_alive": 4,
+          "dead_allies": [],
+          "player_hp": 250,
+          "ult_charge_pct": 9,
+          "event_type": "sleep_dart_used",
+          "target": "Enemy Orisa in choke corridor",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        }
+      ]
+    },
+    {
+      "fight_id": 4,
+      "time_range": "03:15 - 04:12",
+      "outcome": "WON",
+      "events": [
+        {
+          "t": "03:51",
+          "alive_ratio": "5v4",
+          "ally_alive": 5,
+          "enemy_alive": 4,
+          "dead_allies": [],
+          "player_hp": 250,
+          "ult_charge_pct": 100,
+          "event_type": "ult_used",
+          "target": "Friendly Winston pushing contested forward bridge",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": "Winston",
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        },
+        {
+          "t": "04:07",
+          "alive_ratio": "5v4",
+          "ally_alive": 5,
+          "enemy_alive": 4,
+          "dead_allies": [],
+          "player_hp": 190,
+          "ult_charge_pct": 20,
+          "event_type": "sleep_dart_used",
+          "target": "Enemy Ashe/Cassidy in narrow side hallway",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        }
+      ]
+    },
+    {
+      "fight_id": 5,
+      "time_range": "04:15 - 05:25",
+      "outcome": "LOST",
+      "events": [
+        {
+          "t": "05:18",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 232,
+          "ult_charge_pct": 84,
+          "event_type": "biotic_nade_used",
+          "target": "Enemy team grouped around robot turn",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "offensive_anti",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        }
+      ]
+    }
+  ],
+  "_token_usage": {
+    "promptTokenCount": 28233,
+    "candidatesTokenCount": 2808,
+    "totalTokenCount": 31887,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 932
+      },
+      {
+        "modality": "VIDEO",
+        "tokenCount": 27301
+      }
+    ],
+    "thoughtsTokenCount": 846,
+    "serviceTier": "standard"
+  }
+}

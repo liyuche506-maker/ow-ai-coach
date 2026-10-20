@@ -1,0 +1,284 @@
+{
+  "match_meta": {
+    "replay_code": "HSA58Z",
+    "title": "deathless ana",
+    "player": "trevor",
+    "hero": "Ana",
+    "rank": "Grandmaster 5",
+    "map": "Havana",
+    "outcome": "win",
+    "duration": "00:14:39",
+    "youtube_url": "https://www.youtube.com/watch?v=KR55aTHtEfk",
+    "ally_comp_observed": [
+      "D.Va",
+      "Genji",
+      "Cassidy",
+      "Lifeweaver",
+      "Ana"
+    ],
+    "enemy_threats": [
+      "Sigma",
+      "Genji",
+      "Hanzo",
+      "Baptiste",
+      "Moira"
+    ]
+  },
+  "fights": [
+    {
+      "fight_id": 1,
+      "time_range": "00:45 - 01:55",
+      "outcome": "LOST",
+      "events": [
+        {
+          "t": "01:19",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 133,
+          "ult_charge_pct": 32,
+          "event_type": "biotic_nade_used",
+          "target": "Enemy frontline and allied D.Va contesting the payload",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "offensive_anti",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        },
+        {
+          "t": "01:21",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 133,
+          "ult_charge_pct": 33,
+          "event_type": "sleep_dart_used",
+          "target": "Enemy Sigma around payload corner at long range",
+          "is_poke_lottery_sleep": true,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        }
+      ]
+    },
+    {
+      "fight_id": 2,
+      "time_range": "02:15 - 03:10",
+      "outcome": "WON",
+      "events": [
+        {
+          "t": "02:26",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 250,
+          "ult_charge_pct": 91,
+          "event_type": "biotic_nade_used",
+          "target": "Critical allied Genji (SouljaBoy) to save him from lethal burst",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "defensive_heal",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        },
+        {
+          "t": "02:36",
+          "alive_ratio": "3v5",
+          "ally_alive": 3,
+          "enemy_alive": 5,
+          "dead_allies": [
+            "Lazear",
+            "Earthmonkgg"
+          ],
+          "player_hp": 250,
+          "ult_charge_pct": 100,
+          "event_type": "ult_used",
+          "target": "Allied Genji (SouljaBoy) initiating Dragonblade",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": "Genji",
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        },
+        {
+          "t": "02:44",
+          "alive_ratio": "3v4",
+          "ally_alive": 3,
+          "enemy_alive": 4,
+          "dead_allies": [
+            "Lazear",
+            "Earthmonkgg"
+          ],
+          "player_hp": 58,
+          "ult_charge_pct": 2,
+          "event_type": "biotic_nade_used",
+          "target": "Self-heal after taking splash damage at the corner",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "self_heal",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        }
+      ]
+    },
+    {
+      "fight_id": 3,
+      "time_range": "03:30 - 04:32",
+      "outcome": "LOST",
+      "events": [
+        {
+          "t": "03:45",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 221,
+          "ult_charge_pct": 52,
+          "event_type": "biotic_nade_used",
+          "target": "Enemy frontline and critical allied Cassidy",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "defensive_heal",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        },
+        {
+          "t": "03:59",
+          "alive_ratio": "4v4",
+          "ally_alive": 4,
+          "enemy_alive": 4,
+          "dead_allies": [
+            "Lazear"
+          ],
+          "player_hp": 75,
+          "ult_charge_pct": 66,
+          "event_type": "biotic_nade_used",
+          "target": "Self-heal while anti-healed and under heavy pressure",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "self_heal",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        },
+        {
+          "t": "04:14",
+          "alive_ratio": "4v4",
+          "ally_alive": 4,
+          "enemy_alive": 4,
+          "dead_allies": [
+            "Lazear"
+          ],
+          "player_hp": 247,
+          "ult_charge_pct": 94,
+          "event_type": "sleep_dart_used",
+          "target": "Enemy tank diving through choke",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        }
+      ]
+    },
+    {
+      "fight_id": 4,
+      "time_range": "04:35 - 05:28",
+      "outcome": "WON",
+      "events": [
+        {
+          "t": "04:47",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 250,
+          "ult_charge_pct": 100,
+          "event_type": "ult_used",
+          "target": "Allied D.Va (Earthmonkgg) re-engaging inside warehouse choke",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": "D.Va",
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        },
+        {
+          "t": "05:14",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 247,
+          "ult_charge_pct": 39,
+          "event_type": "biotic_nade_used",
+          "target": "Enemy frontline clustered on warehouse high ground stairs",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "offensive_anti",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": null,
+          "duration_sec": null,
+          "exposed_enemy": null
+        }
+      ]
+    }
+  ],
+  "_token_usage": {
+    "promptTokenCount": 28234,
+    "candidatesTokenCount": 2644,
+    "totalTokenCount": 32647,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 933
+      },
+      {
+        "modality": "VIDEO",
+        "tokenCount": 27301
+      }
+    ],
+    "thoughtsTokenCount": 1769,
+    "serviceTier": "standard"
+  }
+}
