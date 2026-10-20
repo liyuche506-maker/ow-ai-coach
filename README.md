@@ -4,6 +4,8 @@ An automated Overwatch 2 VOD analysis & coaching pipeline that eliminates generi
 
 ## Architecture
 
+See [ARCHITECTURE.md](ARCHITECTURE.md) for the full system design, zero-friction input pipelines (`Insights.gg` & `owreplays.tv`), HUD-grounded timeline translation, rank-stratified rubric generation, and Map-Reduce match coaching architecture.
+
 1. **Data / Replay Ingestion (`scraper/owreplays_client.py`)**
    - Polls public replay metadata and rendered first-person YouTube VOD links from `owreplays.tv` (or local `Insights.gg` auto-recorded matches).
 2. **Stage 1: Video-to-Timeline Translator (`agent/timeline_translator.py`)**

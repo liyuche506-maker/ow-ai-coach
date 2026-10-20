@@ -44,8 +44,10 @@ def evaluate_timeline_with_rubric(
 
             elif etype == "player_death" and ev.get("sleep_on_cd_when_dove"):
                 rule = rules_by_id["ANA_DIA_02"]
-                sleep_time = last_poke_sleep["t"] if last_poke_sleep else "数秒前"
-                sleep_target = last_poke_sleep["target"] if last_poke_sleep else "远端目标"
+                sleep_time = last_poke_sleep["t"] if last_poke_sleep else "seconds prior"
+                sleep_target = (
+                    last_poke_sleep["target"] if last_poke_sleep else "distant target"
+                )
                 sec_diff = (
                     _parse_seconds(ev["t"]) - _parse_seconds(last_poke_sleep["t"])
                     if last_poke_sleep
@@ -79,8 +81,8 @@ def evaluate_timeline_with_rubric(
                     msg = rule["diagnostic_template"].format(
                         timestamp=ev["t"],
                         alive_ratio=ev["alive_ratio"],
-                        dead_allies="、".join(ev.get("dead_allies", ["前排核心"])),
-                        nano_target=ev.get("ult_target", "队友"),
+                        dead_allies=", ".join(ev.get("dead_allies", ["core frontline"])),
+                        nano_target=ev.get("ult_target", "ally"),
                     )
                     record = {
                         "fight_id": fid,
@@ -100,7 +102,7 @@ def evaluate_timeline_with_rubric(
                     alive_ratio=ev["alive_ratio"],
                     ally_hp_pct=ev.get("ally_hp_pct", 90),
                     duration=ev.get("duration_sec", 4.0),
-                    exposed_enemy=ev.get("exposed_enemy", "敌方后排"),
+                    exposed_enemy=ev.get("exposed_enemy", "enemy backline"),
                 )
                 record = {
                     "fight_id": fid,
@@ -115,7 +117,9 @@ def evaluate_timeline_with_rubric(
 
     # Evaluate ANA_DIA_01 across all Biotic Grenades in the match
     total_nades = len(nade_events)
-    offensive_nades = sum(1 for n in nade_events if n.get("nade_usage") == "offensive_anti")
+    offensive_nades = sum(
+        1 for n in nade_events if n.get("nade_usage") == "offensive_anti"
+    )
     offensive_pct = round((offensive_nades / total_nades) * 100) if total_nades else 0
 
     if total_nades > 0 and (offensive_nades / total_nades) < 0.45:
@@ -162,9 +166,9 @@ def evaluate_timeline_with_rubric(
             },
         },
         "top_habit_root_causes": [
-            f"【习惯性死因 #1 - 睡眠针防切纪律崩盘】：本局你在面对 {'/'.join(meta.get('enemy_threats', []))} 时，有 {len(sleep_cd_deaths)} 波输掉的团战都是因为开团前先把睡眠针远距离抽奖丢向敌方前排/走廊，导致 7~9 秒后敌方狗位跳脸时无针可用而暴毙。",
-            f"【习惯性瓶颈 #2 - 生物手雷沦为自保/擦屁股工具】：整局记录的 {total_nades} 个生物手雷中，进攻紫瓶仅占 {offensive_pct}%（唯一赢下的 Fight #2 正是因为 [02:24] 禁疗了敌方温斯顿+源氏）。其余全部用于被蹭血后砸脚自奶或给高血量主T溢奶。",
-            f"【习惯性瓶颈 #3 - 残局盲目交激素】：在 [04:01] 己方主T和主C已阵亡（3v5）的情况下强行交出纳米激素，直接葬送下一波团战的大招经济。",
+            f"[Habit #1 - Breakdown in Sleep Dart Anti-Dive Discipline]: Against {'/'.join(meta.get('enemy_threats', []))}, {len(sleep_cd_deaths)} of your lost fights occurred because you fired low-percentage poke Sleep Darts at distant targets, leaving you defenseless when dove 7-9s later.",
+            f"[Habit #2 - Passive/Reactive Biotic Grenade Usage]: Out of {total_nades} Biotic Grenades tracked, only {offensive_pct}% were used for offensive purple anti-heals (your sole won fight, Fight #2, was won directly off your [02:24] anti-nade on Winston+Genji). The rest were spent on reactive self-heals or topping off a 75% HP Tank.",
+            f"[Habit #3 - Panic Ultimate Investment in Lost Fights]: At [04:01], you invested Nano Boost during a 3v5 after your Tank and DPS were already eliminated, crippling your ultimate economy for the next fight.",
         ],
         "timeline_critiques": micro_findings,
     }
@@ -174,34 +178,36 @@ def render_markdown_report(report: Dict[str, Any], rubric: Dict[str, Any]) -> st
     meta = report["match_meta"]
     macro = report["macro_aggregation"]
     lines = [
-        f"# 🎯 OW2 AI 教练整局复盘报告：{meta['player']} ({meta['rank']} - {meta['hero']})",
-        f"- **回放代码**: `{meta['replay_code']}` | **地图**: {meta['map']} | **结果**: {meta['outcome'].upper()} | **VOD**: {meta['youtube_url']}",
-        f"- **敌方核心威胁**: `{', '.join(meta.get('enemy_threats', []))}`",
+        f"# OW2 AI Coach Full-Match Review: {meta['player']} ({meta['rank']} - {meta['hero']})",
+        f"- **Replay Code**: `{meta['replay_code']}` | **Map**: {meta['map']} | **Result**: {meta['outcome'].upper()} | **VOD**: {meta['youtube_url']}",
+        f"- **Enemy Dive/Flank Threats**: `{', '.join(meta.get('enemy_threats', []))}`",
         "",
-        "## 一、 整局宏观数据聚合 (Match-Level Aggregation)",
-        f"- **团战胜率**: 分析 {macro['total_fights_analyzed']} 波关键团战（赢 {macro['fights_won']} 波 / 输 {macro['fights_lost']} 波）",
-        f"- **生物手雷进攻紫瓶率**: **{macro['biotic_nade_stats']['offensive_anti_pct']}** ({macro['biotic_nade_stats']['offensive_anti_count']}/{macro['biotic_nade_stats']['total_thrown']} 个用于进攻禁疗，钻石晋级大师标准 `{macro['biotic_nade_stats']['diamond_benchmark']}`)",
-        f"- **因乱交睡针导致被切阵亡**: **{macro['sleep_discipline_stats']['deaths_while_sleep_on_cd_from_poke']} 次**",
-        f"- **残局无效纳米激素 (人数差 ≤ -2)**: **{macro['ult_economy_stats']['wasted_nanos_in_lost_fights']} 次**",
+        "## 1. Match-Level Aggregation (Macro Telemetry)",
+        f"- **Teamfights Analyzed**: {macro['total_fights_analyzed']} ({macro['fights_won']} Won / {macro['fights_lost']} Lost)",
+        f"- **Offensive Anti-Nade Ratio**: **{macro['biotic_nade_stats']['offensive_anti_pct']}** ({macro['biotic_nade_stats']['offensive_anti_count']}/{macro['biotic_nade_stats']['total_thrown']} offensive purple nades; Diamond-to-Master benchmark: `{macro['biotic_nade_stats']['diamond_benchmark']}`)",
+        f"- **Deaths While Sleep Dart on Cooldown from Poke**: **{macro['sleep_discipline_stats']['deaths_while_sleep_on_cd_from_poke']}**",
+        f"- **Wasted Nano Boosts in Lost Fights (Alive Diff <= -2)**: **{macro['ult_economy_stats']['wasted_nanos_in_lost_fights']}**",
         "",
-        "## 二、 跨团战病根诊断 (Systemic Habit Root Causes)",
+        "## 2. Systemic Habit Root Causes",
     ]
     for habit in report["top_habit_root_causes"]:
         lines.append(f"- {habit}")
 
-    lines.extend(["", "## 三、 团战时间轴铁证审判 (HUD-Grounded Timeline Audit)"])
+    lines.extend(["", "## 3. HUD-Grounded Timeline Audit (Micro Evidence)"])
     for item in report["timeline_critiques"]:
         lines.append(
             f"### [Fight #{item['fight_id']} | {item['timestamp']}] `{item['rule_id']}` ({item['severity']})"
         )
-        lines.append(f"- **客观战况诊断**: {item['diagnosis']}")
-        lines.append(f"- **可执行修正方案**: {item['fix']}")
+        lines.append(f"- **HUD Fact Diagnosis**: {item['diagnosis']}")
+        lines.append(f"- **Actionable Fix**: {item['fix']}")
         lines.append("")
 
     md = "\n".join(lines)
     # Verify negative constraints (no forbidden platitudes)
     for bad_phrase in rubric.get("forbidden_platitudes", []):
-        assert bad_phrase not in md, f"Violation: forbidden platitude '{bad_phrase}' found in report!"
+        assert (
+            bad_phrase.lower() not in md.lower()
+        ), f"Violation: forbidden platitude '{bad_phrase}' found in report!"
     return md
 
 
