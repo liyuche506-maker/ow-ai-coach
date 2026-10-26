@@ -1,0 +1,169 @@
+{
+  "discovered_temporal_laws": [
+    {
+      "law_id": "TL-01",
+      "law_name": "Long-Range Sleep Dart Penalty under Active Dive Threat",
+      "description": "Expending Sleep Dart as long-range poke early or mid-fight when enemy comps contain dive threats (Tracer, Genji, Doomfist, Sombra) directly causes player deaths and fight losses due to cooldown unavailability during target engagement.",
+      "empirical_win_rate": 0.0,
+      "player_death_rate": 0.5,
+      "supporting_evidence": [
+        {
+          "replay_code": "0AJTQ5",
+          "fight_id": 2,
+          "timestamp": "01:43",
+          "context": "Player used sleep:long_range_poke early at 01:43 against enemy dive comp; sleep was on cooldown when dove at 02:32, resulting in player death and fight loss."
+        },
+        {
+          "replay_code": "Q9KEG8",
+          "fight_id": 1,
+          "timestamp": "00:41",
+          "context": "Player fired long-range poke sleep dart down main corridor at 00:41; taken down by enemy close-range engage at 00:49 with sleep on CD."
+        }
+      ]
+    },
+    {
+      "law_id": "TL-02",
+      "law_name": "Mid/Late Fight Offensive Anti-Nade Convergence",
+      "description": "Delaying offensive Anti-Nade until mid/late fight sequence during active frontline engagement yields 100% win rate in GM cohorts compared to early uncoordinated engagement nades.",
+      "empirical_win_rate": 1.0,
+      "player_death_rate": 0.0,
+      "supporting_evidence": [
+        {
+          "replay_code": "0AJTQ5",
+          "fight_id": 1,
+          "timestamp": "01:06",
+          "context": "After stabilizing with defensive heal at 00:52, mid-fight offensive nade at 01:06 into frontline cluster secured fight victory."
+        },
+        {
+          "replay_code": "HSA58Z",
+          "fight_id": 4,
+          "timestamp": "05:14",
+          "context": "Mid-fight offensive anti-nade on warehouse stairs cluster at 05:14 followed Nano engage to win fight."
+        }
+      ]
+    },
+    {
+      "law_id": "TL-03",
+      "law_name": "First-Action Neutral Anti-Nade Trap without Dive Threat",
+      "description": "Throwing an offensive anti-nade as the very first action in neutral 5v5 state without active dive threats yields an abnormally low 20% win rate and 40% death rate due to wasted utility prior to main engagement.",
+      "empirical_win_rate": 0.2,
+      "player_death_rate": 0.4,
+      "supporting_evidence": [
+        {
+          "replay_code": "V89RSK",
+          "fight_id": 1,
+          "timestamp": "00:46",
+          "context": "First action offensive nade into doorway at 00:46 led to player death at 01:16 and fight loss."
+        },
+        {
+          "replay_code": "V89RSK",
+          "fight_id": 2,
+          "timestamp": "01:33",
+          "context": "Opening with offensive nade into doorway led to loss and player death at 02:59."
+        }
+      ]
+    },
+    {
+      "law_id": "TL-04",
+      "law_name": "Critical Health Self-Nade Survival Inversion",
+      "description": "Using Biotic Grenade for self/ally stabilization when entering numbers disadvantage at low/critical HP (<120 HP) converts potential wipes into fight recoveries.",
+      "empirical_win_rate": 1.0,
+      "player_death_rate": 0.0,
+      "supporting_evidence": [
+        {
+          "replay_code": "CP9GCK",
+          "fight_id": 1,
+          "timestamp": "00:59",
+          "context": "At 4v5 deficit and taking burst damage, immediate nade:self_heal stabilized player, leading to full fight turnaround."
+        },
+        {
+          "replay_code": "D86HQF",
+          "fight_id": 2,
+          "timestamp": "01:53",
+          "context": "At 4v5 deficit with 112 HP, nade:self_heal sustained Ana and Mauga, enabling a 1.0 win rate outcome."
+        },
+        {
+          "replay_code": "HZJK6E",
+          "fight_id": 1,
+          "timestamp": "01:28",
+          "context": "At 4v5 deficit with 53 HP, nade:self_heal allowed survival against flanker and won fight."
+        }
+      ]
+    },
+    {
+      "law_id": "TL-05",
+      "law_name": "Snowball Nano-Boost Ult Chaining under Numbers Advantage",
+      "description": "Deploying Nano Boost in mid/late fight sequence immediately after securing a numbers advantage (5v4 or better) guarantees 100% fight conversion.",
+      "empirical_win_rate": 1.0,
+      "player_death_rate": 0.0,
+      "supporting_evidence": [
+        {
+          "replay_code": "D86HQF",
+          "fight_id": 2,
+          "timestamp": "02:20",
+          "context": "Nano Boost on Mauga in 5v4 state at 02:20 closed out the fight cleanly."
+        },
+        {
+          "replay_code": "CP9GCK",
+          "fight_id": 2,
+          "timestamp": "02:58",
+          "context": "Nano Boost on D.Va in 5v4 state at 02:58 guaranteed full wipe."
+        },
+        {
+          "replay_code": "MFTXPE",
+          "fight_id": 2,
+          "timestamp": "02:17",
+          "context": "Nano Boost on Winston in 5v4 advantage at 02:17 converted fight victory."
+        }
+      ]
+    }
+  ],
+  "contextual_interaction_laws": [
+    {
+      "context_factor": "Enemy Threat Profile (Dive Threat vs Non-Dive Poke)",
+      "finding": "Against compositions with high dive threat (Tracer, Genji, Doomfist, Sombra, Venture), offensive anti-nade requires defensive holding of Sleep Dart for close targets. Attempting long-range sleep dart drops Ana's win rate to 0.0% because dive heroes exploit the 14-second window. In contrast, against low dive compositions (e.g. Roadhog/Orisa poke), close/mid sleep darts can be used proactively to set up frontline kills.",
+      "empirical_pattern": "GM players against dive threats hold sleep for target engagement under 15m (0.833 win rate in Diamond, 0.667 in GM), whereas long-range sleep dart against dive comps results in 0.0% win rate across all ranks."
+    },
+    {
+      "context_factor": "Sequence Timing (First Action vs Mid/Late Fight)",
+      "finding": "Opening a fight with an offensive anti-nade before team engagement occurs leads to wasted utility (0.20 win rate in neutral non-dive setups). Mid-fight anti-nades delivered once frontlines bind yield a 1.00 win rate in GM cohorts because Kiriko Suzu or defensive abilities are already baited or enemy positions are anchored.",
+      "empirical_pattern": "mid_or_late_fight_action nade:offensive_anti (1.00 win rate, 0% death rate in GM) vs first_action_in_fight nade:offensive_anti (0.20 win rate, 40% death rate in Diamond)."
+    }
+  ],
+  "auto_generated_rubric": {
+    "rules": [
+      {
+        "rule_id": "RULE-ANA-01",
+        "discovered_pattern_name": "Anti-Poke Sleep Dart Prohibition under Dive Threat",
+        "state_precondition": "even_numbers, healthy_hp(>=120), dive_threat=True",
+        "optimal_action_vs_fatal_action": "OPTIMAL: Hold sleep dart for close/mid target (<15m) or defensive peel. FATAL: Action (sleep:long_range_poke).",
+        "empirical_evidence_from_dataset": "Long-range sleep poke under dive threat produces 0.0% fight win rate and 50% player death rate (Replays: 0AJTQ5 fight 2, Q9KEG8 fight 1, HSA58Z fight 1).",
+        "coaching_trigger": "Player uses Sleep Dart at long range (>25m) while enemy team runs Tracer/Genji/Sombra/Doomfist."
+      },
+      {
+        "rule_id": "RULE-ANA-02",
+        "discovered_pattern_name": "Mid-Fight Frontline Anti-Nade Sequence",
+        "state_precondition": "even_numbers, healthy_hp(>=120), mid_or_late_fight_action, dive_threat=True",
+        "optimal_action_vs_fatal_action": "OPTIMAL: Action (nade:offensive_anti) into engaged frontline clusters. FATAL: Opening fight with uncoordinated long-range anti-nade prior to frontline contact.",
+        "empirical_evidence_from_dataset": "Mid-fight offensive nades achieve 100% fight win rate and 0% death rate in GM trajectories (0AJTQ5 fight 1, HSA58Z fight 4) compared to 20% win rate for uncoordinated opening nades (V89RSK fight 1 & 2).",
+        "coaching_trigger": "Player throws Biotic Grenade at start of fight before tanks engage."
+      },
+      {
+        "rule_id": "RULE-ANA-03",
+        "discovered_pattern_name": "Deficit Self-Nade Stabilization Protocol",
+        "state_precondition": "numbers_disadvantage, critical_hp(<120), dive_threat=True",
+        "optimal_action_vs_fatal_action": "OPTIMAL: Action (nade:self_heal) targeting self and nearby allies. FATAL: Attempting greedy offensive anti-nade or holding nade while dying.",
+        "empirical_evidence_from_dataset": "Self-heal nade during numbers disadvantage at low HP results in 100% win rate and 0% player death rate (CP9GCK fight 1, D86HQF fight 2, HZJK6E fight 1, NX415N fight 1).",
+        "coaching_trigger": "Player drops below 120 HP during deficit state without using Biotic Grenade defensively."
+      },
+      {
+        "rule_id": "RULE-ANA-04",
+        "discovered_pattern_name": "Advantage Nano-Boost Snowball Execution",
+        "state_precondition": "numbers_advantage, healthy_hp(>=120), mid_or_late_fight_action",
+        "optimal_action_vs_fatal_action": "OPTIMAL: Action (ult_on:Tank/Brawler) to rapidly wipe remaining enemy team. FATAL: Holding ultimate until enemy team regroups or resets.",
+        "empirical_evidence_from_dataset": "Nano Boost deployed during 5v4 or 5v3 advantage yields a 100% fight win rate across Diamond and GM cohorts (D86HQF fight 2 & 3, CP9GCK fight 2, MFTXPE fight 2 & 4).",
+        "coaching_trigger": "Player holds Nano Boost for more than 10 seconds after team achieves first pick."
+      }
+    ]
+  }
+}

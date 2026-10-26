@@ -1,0 +1,2379 @@
+{
+  "total_fights": 41,
+  "empirical_state_action_table": [
+    {
+      "state_action_pattern": "[Diamond] state=(even_numbers, healthy_hp(>=120), mid_or_late_fight_action, dive_threat=True) -> action=(sleep:close_or_mid_target)",
+      "occurrences": 6,
+      "fight_win_rate": 0.833,
+      "player_death_rate_in_fight": 0.167
+    },
+    {
+      "state_action_pattern": "[Diamond] state=(even_numbers, healthy_hp(>=120), first_action_in_fight, dive_threat=False) -> action=(nade:offensive_anti)",
+      "occurrences": 5,
+      "fight_win_rate": 0.2,
+      "player_death_rate_in_fight": 0.4
+    },
+    {
+      "state_action_pattern": "[GM] state=(even_numbers, healthy_hp(>=120), first_action_in_fight, dive_threat=True) -> action=(nade:defensive_heal)",
+      "occurrences": 4,
+      "fight_win_rate": 0.5,
+      "player_death_rate_in_fight": 0.25
+    },
+    {
+      "state_action_pattern": "[GM] state=(even_numbers, healthy_hp(>=120), first_action_in_fight, dive_threat=True) -> action=(nade:offensive_anti)",
+      "occurrences": 4,
+      "fight_win_rate": 0.75,
+      "player_death_rate_in_fight": 0.0
+    },
+    {
+      "state_action_pattern": "[GM] state=(even_numbers, healthy_hp(>=120), mid_or_late_fight_action, dive_threat=True) -> action=(nade:offensive_anti)",
+      "occurrences": 4,
+      "fight_win_rate": 1.0,
+      "player_death_rate_in_fight": 0.0
+    },
+    {
+      "state_action_pattern": "[Diamond] state=(even_numbers, healthy_hp(>=120), first_action_in_fight, dive_threat=True) -> action=(nade:offensive_anti)",
+      "occurrences": 3,
+      "fight_win_rate": 0.667,
+      "player_death_rate_in_fight": 0.333
+    },
+    {
+      "state_action_pattern": "[Diamond] state=(even_numbers, healthy_hp(>=120), mid_or_late_fight_action, dive_threat=True) -> action=(nade:offensive_anti)",
+      "occurrences": 3,
+      "fight_win_rate": 0.667,
+      "player_death_rate_in_fight": 0.0
+    },
+    {
+      "state_action_pattern": "[GM] state=(even_numbers, healthy_hp(>=120), first_action_in_fight, dive_threat=True) -> action=(sleep:close_or_mid_target)",
+      "occurrences": 3,
+      "fight_win_rate": 0.667,
+      "player_death_rate_in_fight": 0.333
+    },
+    {
+      "state_action_pattern": "[GM] state=(even_numbers, healthy_hp(>=120), mid_or_late_fight_action, dive_threat=True) -> action=(sleep:close_or_mid_target)",
+      "occurrences": 3,
+      "fight_win_rate": 0.667,
+      "player_death_rate_in_fight": 0.0
+    },
+    {
+      "state_action_pattern": "[Diamond] state=(even_numbers, healthy_hp(>=120), first_action_in_fight, dive_threat=True) -> action=(sleep:close_or_mid_target)",
+      "occurrences": 2,
+      "fight_win_rate": 1.0,
+      "player_death_rate_in_fight": 0.0
+    },
+    {
+      "state_action_pattern": "[Diamond] state=(numbers_advantage, healthy_hp(>=120), mid_or_late_fight_action, dive_threat=True) -> action=(sleep:close_or_mid_target)",
+      "occurrences": 2,
+      "fight_win_rate": 1.0,
+      "player_death_rate_in_fight": 0.0
+    },
+    {
+      "state_action_pattern": "[Diamond] state=(numbers_advantage, healthy_hp(>=120), mid_or_late_fight_action, dive_threat=True) -> action=(ult_on:Mauga)",
+      "occurrences": 2,
+      "fight_win_rate": 1.0,
+      "player_death_rate_in_fight": 0.0
+    },
+    {
+      "state_action_pattern": "[Diamond] state=(numbers_disadvantage, critical_hp(<120), first_action_in_fight, dive_threat=True) -> action=(nade:self_heal)",
+      "occurrences": 2,
+      "fight_win_rate": 1.0,
+      "player_death_rate_in_fight": 0.0
+    },
+    {
+      "state_action_pattern": "[Diamond] state=(numbers_disadvantage, healthy_hp(>=120), mid_or_late_fight_action, dive_threat=True) -> action=(sleep:close_or_mid_target)",
+      "occurrences": 2,
+      "fight_win_rate": 0.0,
+      "player_death_rate_in_fight": 1.0
+    },
+    {
+      "state_action_pattern": "[GM] state=(even_numbers, healthy_hp(>=120), mid_or_late_fight_action, dive_threat=True) -> action=(sleep:long_range_poke)",
+      "occurrences": 2,
+      "fight_win_rate": 0.0,
+      "player_death_rate_in_fight": 0.5
+    }
+  ],
+  "raw_fight_trajectories": [
+    {
+      "replay_code": "0AJTQ5",
+      "cohort": "gm_win",
+      "rank": "Grandmaster 5",
+      "map": "New Queen Street",
+      "ally_comp": [
+        "Winston",
+        "Tracer",
+        "Genji",
+        "Kiriko",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "Doomfist",
+        "Tracer",
+        "Genji",
+        "Sombra",
+        "Kiriko"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 1,
+      "time_range": "00:43 - 01:12",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "00:52",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 163,
+          "ult_pct": 18,
+          "action": "nade:defensive_heal",
+          "target_context": "Norton (Winston) and self under poke fire at courtyard",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "01:06",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 36,
+          "action": "nade:offensive_anti",
+          "target_context": "Enemy frontline cluster around fountain corner",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "0AJTQ5",
+      "cohort": "gm_win",
+      "rank": "Grandmaster 5",
+      "map": "New Queen Street",
+      "ally_comp": [
+        "Winston",
+        "Tracer",
+        "Genji",
+        "Kiriko",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "Doomfist",
+        "Tracer",
+        "Genji",
+        "Sombra",
+        "Kiriko"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 2,
+      "time_range": "01:38 - 02:35",
+      "fight_outcome": "LOST",
+      "player_died": true,
+      "trajectory": [
+        {
+          "t": "01:43",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 157,
+          "ult_pct": 60,
+          "action": "sleep:long_range_poke",
+          "target_context": "Enemy team down street corridor from high ground window",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "01:50",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 100,
+          "ult_pct": 70,
+          "action": "nade:defensive_heal",
+          "target_context": "Norton (Winston) fighting below bridge window",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "02:16",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 246,
+          "ult_pct": 100,
+          "action": "sleep:long_range_poke",
+          "target_context": "Enemy tank engaging on street",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "02:19",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 99,
+          "ult_pct": 100,
+          "action": "ult_on:Winston",
+          "target_context": "Norton (Winston)",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "02:32",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "3v4",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 0,
+          "ult_pct": 0,
+          "action": "player_death",
+          "target_context": "Self",
+          "sleep_on_cd_when_dove": true,
+          "dead_allies": [
+            "Norton"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "0AJTQ5",
+      "cohort": "gm_win",
+      "rank": "Grandmaster 5",
+      "map": "New Queen Street",
+      "ally_comp": [
+        "Winston",
+        "Tracer",
+        "Genji",
+        "Kiriko",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "Doomfist",
+        "Tracer",
+        "Genji",
+        "Sombra",
+        "Kiriko"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 3,
+      "time_range": "03:45 - 04:16",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "03:50",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 10,
+          "ult_pct": 46,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Flanking enemy Tracer inside train station interior",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "03:52",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 186,
+          "ult_pct": 49,
+          "action": "nade:offensive_anti",
+          "target_context": "Slept enemy Tracer and self inside building",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "04:09",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 65,
+          "action": "nade:defensive_heal",
+          "target_context": "Norton (Winston) at station doorway",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "0AJTQ5",
+      "cohort": "gm_win",
+      "rank": "Grandmaster 5",
+      "map": "New Queen Street",
+      "ally_comp": [
+        "Winston",
+        "Tracer",
+        "Genji",
+        "Kiriko",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "Doomfist",
+        "Tracer",
+        "Genji",
+        "Sombra",
+        "Kiriko"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 4,
+      "time_range": "04:22 - 05:20",
+      "fight_outcome": "LOST",
+      "player_died": true,
+      "trajectory": [
+        {
+          "t": "04:27",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 194,
+          "ult_pct": 76,
+          "action": "nade:defensive_heal",
+          "target_context": "Norton (Winston) entering gym interior",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "04:45",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 130,
+          "ult_pct": 98,
+          "action": "nade:self_heal",
+          "target_context": "Self heal against Tracer dive",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "05:15",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "3v4",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 0,
+          "ult_pct": 7,
+          "action": "player_death",
+          "target_context": "Self",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Nair"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "78H7MX",
+      "cohort": "diamond_loss",
+      "rank": "Diamond 4",
+      "map": "Nepal",
+      "ally_comp": [
+        "Ana",
+        "Kiriko",
+        "Ramattra",
+        "Sojourn",
+        "Tracer"
+      ],
+      "enemy_comp": [
+        "Ana",
+        "Kiriko",
+        "Ramattra",
+        "Sojourn",
+        "Tracer"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 1,
+      "time_range": "00:40 - 02:22",
+      "fight_outcome": "LOST",
+      "player_died": true,
+      "trajectory": [
+        {
+          "t": "00:45",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 10,
+          "action": "nade:offensive_anti",
+          "target_context": "Enemy Ramattra",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "00:50",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 15,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Enemy Ramattra",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "01:25",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "4v5",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 250,
+          "ult_pct": 38,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Enemy Ramattra",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Sojourn"
+          ]
+        },
+        {
+          "t": "01:57",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "3v5",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 210,
+          "ult_pct": 83,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Enemy Sojourn",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Sojourn",
+            "Tracer"
+          ]
+        },
+        {
+          "t": "02:20",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "2v5",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 0,
+          "ult_pct": 100,
+          "action": "player_death",
+          "target_context": null,
+          "sleep_on_cd_when_dove": true,
+          "dead_allies": [
+            "Sojourn",
+            "Tracer",
+            "Ramattra"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "92EMFN",
+      "cohort": "diamond_loss",
+      "rank": "Diamond 4",
+      "map": "King's Row",
+      "ally_comp": [
+        "Reinhardt",
+        "Mercy",
+        "Moira",
+        "Cassidy",
+        "Reaper",
+        "Sombra",
+        "D.Va"
+      ],
+      "enemy_comp": [
+        "Sombra",
+        "Reinhardt",
+        "Kiriko",
+        "Ana",
+        "Cassidy"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 1,
+      "time_range": "00:44 - 01:05",
+      "fight_outcome": "LOST",
+      "player_died": true,
+      "trajectory": [
+        {
+          "t": "00:55",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "3v5",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 0,
+          "ult_pct": 12,
+          "action": "player_death",
+          "target_context": "Eliminated by Branndooo (Sombra) near choke",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Kohai",
+            "Jayught"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "92EMFN",
+      "cohort": "diamond_loss",
+      "rank": "Diamond 4",
+      "map": "King's Row",
+      "ally_comp": [
+        "Reinhardt",
+        "Mercy",
+        "Moira",
+        "Cassidy",
+        "Reaper",
+        "Sombra",
+        "D.Va"
+      ],
+      "enemy_comp": [
+        "Sombra",
+        "Reinhardt",
+        "Kiriko",
+        "Ana",
+        "Cassidy"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 2,
+      "time_range": "01:10 - 02:00",
+      "fight_outcome": "LOST",
+      "player_died": true,
+      "trajectory": [
+        {
+          "t": "01:52",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "3v4",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 0,
+          "ult_pct": 33,
+          "action": "player_death",
+          "target_context": "Eliminated by Branndooo (Sombra) on point defense",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Jayught"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "92EMFN",
+      "cohort": "diamond_loss",
+      "rank": "Diamond 4",
+      "map": "King's Row",
+      "ally_comp": [
+        "Reinhardt",
+        "Mercy",
+        "Moira",
+        "Cassidy",
+        "Reaper",
+        "Sombra",
+        "D.Va"
+      ],
+      "enemy_comp": [
+        "Sombra",
+        "Reinhardt",
+        "Kiriko",
+        "Ana",
+        "Cassidy"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 3,
+      "time_range": "02:45 - 03:40",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "03:37",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "4v4",
+          "num_state": "even_numbers",
+          "player_hp": 200,
+          "ult_pct": 100,
+          "action": "ult_on:Enemy team grouped around payload",
+          "target_context": "Enemy team grouped around payload",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Jayught"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "BV0VA4",
+      "cohort": "diamond_loss",
+      "rank": "Diamond 4",
+      "map": "Circuit Royal",
+      "ally_comp": [
+        "Doomfist",
+        "Ashe",
+        "Genji",
+        "Symmetra",
+        "Kiriko"
+      ],
+      "enemy_comp": [
+        "Winston",
+        "Mei",
+        "Cassidy",
+        "Ana",
+        "Kiriko"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 1,
+      "time_range": "00:44 - 01:28",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": []
+    },
+    {
+      "replay_code": "BV0VA4",
+      "cohort": "diamond_loss",
+      "rank": "Diamond 4",
+      "map": "Circuit Royal",
+      "ally_comp": [
+        "Doomfist",
+        "Ashe",
+        "Genji",
+        "Symmetra",
+        "Kiriko"
+      ],
+      "enemy_comp": [
+        "Winston",
+        "Mei",
+        "Cassidy",
+        "Ana",
+        "Kiriko"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 2,
+      "time_range": "01:44 - 02:47",
+      "fight_outcome": "LOST",
+      "player_died": true,
+      "trajectory": [
+        {
+          "t": "02:44",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "2v4",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 0,
+          "ult_pct": 69,
+          "action": "player_death",
+          "target_context": "Sleeptite eliminated by Mei",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Symmetra",
+            "Ashe",
+            "Genji"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "BV0VA4",
+      "cohort": "diamond_loss",
+      "rank": "Diamond 4",
+      "map": "Circuit Royal",
+      "ally_comp": [
+        "Doomfist",
+        "Ashe",
+        "Genji",
+        "Symmetra",
+        "Kiriko"
+      ],
+      "enemy_comp": [
+        "Winston",
+        "Mei",
+        "Cassidy",
+        "Ana",
+        "Kiriko"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 3,
+      "time_range": "02:55 - 03:07",
+      "fight_outcome": "LOST",
+      "player_died": true,
+      "trajectory": [
+        {
+          "t": "03:04",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "3v5",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 0,
+          "ult_pct": 71,
+          "action": "player_death",
+          "target_context": "Sleeptite eliminated by Mei",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Genji",
+            "Ashe"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "BV0VA4",
+      "cohort": "diamond_loss",
+      "rank": "Diamond 4",
+      "map": "Circuit Royal",
+      "ally_comp": [
+        "Doomfist",
+        "Ashe",
+        "Genji",
+        "Symmetra",
+        "Kiriko"
+      ],
+      "enemy_comp": [
+        "Winston",
+        "Mei",
+        "Cassidy",
+        "Ana",
+        "Kiriko"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 4,
+      "time_range": "03:20 - 04:55",
+      "fight_outcome": "LOST",
+      "player_died": true,
+      "trajectory": [
+        {
+          "t": "04:33",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 225,
+          "ult_pct": 100,
+          "action": "ult_on:Team",
+          "target_context": "Kitsune Rush deployed down hotel street",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "04:49",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "3v4",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 0,
+          "ult_pct": 13,
+          "action": "player_death",
+          "target_context": "Sleeptite eliminated by Winston",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Ashe",
+            "Genji"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "CP9GCK",
+      "cohort": "gm_win",
+      "rank": "Grandmaster 3",
+      "map": "Runasapi",
+      "ally_comp": [
+        "D.Va",
+        "Genji",
+        "Cassidy",
+        "Lifeweaver",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "D.Va",
+        "Tracer",
+        "Echo",
+        "Kiriko",
+        "Brigitte"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 1,
+      "time_range": "00:50 - 01:25",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "00:59",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "4v5",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 250,
+          "ult_pct": 20,
+          "action": "nade:self_heal",
+          "target_context": "Self heal after taking burst damage near middle gateway",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Lifeweaver"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "CP9GCK",
+      "cohort": "gm_win",
+      "rank": "Grandmaster 3",
+      "map": "Runasapi",
+      "ally_comp": [
+        "D.Va",
+        "Genji",
+        "Cassidy",
+        "Lifeweaver",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "D.Va",
+        "Tracer",
+        "Echo",
+        "Kiriko",
+        "Brigitte"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 2,
+      "time_range": "01:58 - 03:30",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "02:01",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 190,
+          "ult_pct": 68,
+          "action": "nade:offensive_anti",
+          "target_context": "Offensive anti-nade thrown into hallway fight doorway",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "02:58",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v4",
+          "num_state": "numbers_advantage",
+          "player_hp": 250,
+          "ult_pct": 100,
+          "action": "ult_on:D.Va",
+          "target_context": "Nano Boost applied to ally D.Va engaging high ground",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "D86HQF",
+      "cohort": "diamond_win",
+      "rank": "Diamond 3",
+      "map": "New Queen Street",
+      "ally_comp": [
+        "Mauga",
+        "Sojourn",
+        "Tracer",
+        "Kiriko",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "D.Va",
+        "Reaper",
+        "Wrecking Ball",
+        "Pharah"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 1,
+      "time_range": "00:45 - 01:45",
+      "fight_outcome": "LOST",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "01:21",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "3v4",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 250,
+          "ult_pct": 43,
+          "action": "nade:offensive_anti",
+          "target_context": "Warbirdz Gym upper window where enemy ranged DPS is positioned",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Mousi",
+            "Suguri"
+          ]
+        },
+        {
+          "t": "01:35",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "4v4",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 65,
+          "action": "nade:offensive_anti",
+          "target_context": "Enemy front line pushing robot beneath the bridge",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Suguri"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "D86HQF",
+      "cohort": "diamond_win",
+      "rank": "Diamond 3",
+      "map": "New Queen Street",
+      "ally_comp": [
+        "Mauga",
+        "Sojourn",
+        "Tracer",
+        "Kiriko",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "D.Va",
+        "Reaper",
+        "Wrecking Ball",
+        "Pharah"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 2,
+      "time_range": "01:50 - 02:40",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "01:53",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "4v5",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 112,
+          "ult_pct": 79,
+          "action": "nade:self_heal",
+          "target_context": "Self and ally Mauga at low health during enemy push",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Suguri"
+          ]
+        },
+        {
+          "t": "02:20",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v4",
+          "num_state": "numbers_advantage",
+          "player_hp": 195,
+          "ult_pct": 100,
+          "action": "ult_on:Mauga",
+          "target_context": "Mauga initiating Cage Fight on point",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "D86HQF",
+      "cohort": "diamond_win",
+      "rank": "Diamond 3",
+      "map": "New Queen Street",
+      "ally_comp": [
+        "Mauga",
+        "Sojourn",
+        "Tracer",
+        "Kiriko",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "D.Va",
+        "Reaper",
+        "Wrecking Ball",
+        "Pharah"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 3,
+      "time_range": "03:10 - 04:50",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "03:14",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 238,
+          "ult_pct": 37,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Flanking Reaper inside the gym",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "03:22",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v4",
+          "num_state": "numbers_advantage",
+          "player_hp": 48,
+          "ult_pct": 47,
+          "action": "nade:self_heal",
+          "target_context": "Sleeping Reaper and self at critical health",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "04:08",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v4",
+          "num_state": "numbers_advantage",
+          "player_hp": 250,
+          "ult_pct": 100,
+          "action": "ult_on:Mauga",
+          "target_context": "Mauga brawling enemy core in forward streets",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "04:39",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v4",
+          "num_state": "numbers_advantage",
+          "player_hp": 250,
+          "ult_pct": 28,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Wrecking Ball rolling through lobby corridor",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "D86HQF",
+      "cohort": "diamond_win",
+      "rank": "Diamond 3",
+      "map": "New Queen Street",
+      "ally_comp": [
+        "Mauga",
+        "Sojourn",
+        "Tracer",
+        "Kiriko",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "D.Va",
+        "Reaper",
+        "Wrecking Ball",
+        "Pharah"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 4,
+      "time_range": "05:05 - 05:27",
+      "fight_outcome": "LOST",
+      "player_died": true,
+      "trajectory": [
+        {
+          "t": "05:24",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "3v4",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 0,
+          "ult_pct": 77,
+          "action": "player_death",
+          "target_context": "Eliminated by Mutun while exiting gym corridor",
+          "sleep_on_cd_when_dove": true,
+          "dead_allies": [
+            "Suguri",
+            "Siquiru"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "DA9Z8T",
+      "cohort": "gm_win",
+      "rank": "Grandmaster 3",
+      "map": "Esperança",
+      "ally_comp": [
+        "Ana",
+        "Kiriko",
+        "Ramattra",
+        "Sojourn",
+        "Tracer"
+      ],
+      "enemy_comp": [
+        "Winston",
+        "Moira",
+        "Sojourn",
+        "Tracer",
+        "Kiriko"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 1,
+      "time_range": "00:40 - 01:25",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "00:43",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 15,
+          "action": "nade:offensive_anti",
+          "target_context": "Winston",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "00:58",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 212,
+          "ult_pct": 32,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Winston",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "DA9Z8T",
+      "cohort": "gm_win",
+      "rank": "Grandmaster 3",
+      "map": "Esperança",
+      "ally_comp": [
+        "Ana",
+        "Kiriko",
+        "Ramattra",
+        "Sojourn",
+        "Tracer"
+      ],
+      "enemy_comp": [
+        "Winston",
+        "Moira",
+        "Sojourn",
+        "Tracer",
+        "Kiriko"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 2,
+      "time_range": "02:35 - 02:45",
+      "fight_outcome": "LOST",
+      "player_died": true,
+      "trajectory": [
+        {
+          "t": "02:38",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 225,
+          "ult_pct": 64,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Moira",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "02:45",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "4v5",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 0,
+          "ult_pct": 73,
+          "action": "player_death",
+          "target_context": null,
+          "sleep_on_cd_when_dove": true,
+          "dead_allies": [
+            "Ana"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "HSA58Z",
+      "cohort": "gm_win",
+      "rank": "Grandmaster 5",
+      "map": "Havana",
+      "ally_comp": [
+        "D.Va",
+        "Genji",
+        "Cassidy",
+        "Lifeweaver",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "Sigma",
+        "Genji",
+        "Hanzo",
+        "Baptiste",
+        "Moira"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 1,
+      "time_range": "00:45 - 01:55",
+      "fight_outcome": "LOST",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "01:19",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 133,
+          "ult_pct": 32,
+          "action": "nade:offensive_anti",
+          "target_context": "Enemy frontline and allied D.Va contesting the payload",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "01:21",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 133,
+          "ult_pct": 33,
+          "action": "sleep:long_range_poke",
+          "target_context": "Enemy Sigma around payload corner at long range",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "HSA58Z",
+      "cohort": "gm_win",
+      "rank": "Grandmaster 5",
+      "map": "Havana",
+      "ally_comp": [
+        "D.Va",
+        "Genji",
+        "Cassidy",
+        "Lifeweaver",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "Sigma",
+        "Genji",
+        "Hanzo",
+        "Baptiste",
+        "Moira"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 2,
+      "time_range": "02:15 - 03:10",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "02:26",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 91,
+          "action": "nade:defensive_heal",
+          "target_context": "Critical allied Genji (SouljaBoy) to save him from lethal burst",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "02:36",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "3v5",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 250,
+          "ult_pct": 100,
+          "action": "ult_on:Genji",
+          "target_context": "Allied Genji (SouljaBoy) initiating Dragonblade",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Lazear",
+            "Earthmonkgg"
+          ]
+        },
+        {
+          "t": "02:44",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "3v4",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 58,
+          "ult_pct": 2,
+          "action": "nade:self_heal",
+          "target_context": "Self-heal after taking splash damage at the corner",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Lazear",
+            "Earthmonkgg"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "HSA58Z",
+      "cohort": "gm_win",
+      "rank": "Grandmaster 5",
+      "map": "Havana",
+      "ally_comp": [
+        "D.Va",
+        "Genji",
+        "Cassidy",
+        "Lifeweaver",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "Sigma",
+        "Genji",
+        "Hanzo",
+        "Baptiste",
+        "Moira"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 3,
+      "time_range": "03:30 - 04:32",
+      "fight_outcome": "LOST",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "03:45",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 221,
+          "ult_pct": 52,
+          "action": "nade:defensive_heal",
+          "target_context": "Enemy frontline and critical allied Cassidy",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "03:59",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "4v4",
+          "num_state": "even_numbers",
+          "player_hp": 75,
+          "ult_pct": 66,
+          "action": "nade:self_heal",
+          "target_context": "Self-heal while anti-healed and under heavy pressure",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Lazear"
+          ]
+        },
+        {
+          "t": "04:14",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "4v4",
+          "num_state": "even_numbers",
+          "player_hp": 247,
+          "ult_pct": 94,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Enemy tank diving through choke",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Lazear"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "HSA58Z",
+      "cohort": "gm_win",
+      "rank": "Grandmaster 5",
+      "map": "Havana",
+      "ally_comp": [
+        "D.Va",
+        "Genji",
+        "Cassidy",
+        "Lifeweaver",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "Sigma",
+        "Genji",
+        "Hanzo",
+        "Baptiste",
+        "Moira"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 4,
+      "time_range": "04:35 - 05:28",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "04:47",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 100,
+          "action": "ult_on:D.Va",
+          "target_context": "Allied D.Va (Earthmonkgg) re-engaging inside warehouse choke",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "05:14",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 247,
+          "ult_pct": 39,
+          "action": "nade:offensive_anti",
+          "target_context": "Enemy frontline clustered on warehouse high ground stairs",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "HZJK6E",
+      "cohort": "diamond_win",
+      "rank": "Diamond 4",
+      "map": "New Junk City",
+      "ally_comp": [
+        "Ramattra",
+        "Genji",
+        "Tracer",
+        "Ana",
+        "Lifeweaver"
+      ],
+      "enemy_comp": [
+        "D.Va",
+        "Venture",
+        "Genji"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 1,
+      "time_range": "00:40 - 01:45",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "01:28",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "4v5",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 53,
+          "ult_pct": 66,
+          "action": "nade:self_heal",
+          "target_context": "Self-heal after taking burst damage from enemy flanker",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": [
+            "Genji"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "HZJK6E",
+      "cohort": "diamond_win",
+      "rank": "Diamond 4",
+      "map": "New Junk City",
+      "ally_comp": [
+        "Ramattra",
+        "Genji",
+        "Tracer",
+        "Ana",
+        "Lifeweaver"
+      ],
+      "enemy_comp": [
+        "D.Va",
+        "Venture",
+        "Genji"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 2,
+      "time_range": "02:00 - 03:40",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "02:09",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 28,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Venture (CARBAGE) coming through central doorway",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "03:06",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 230,
+          "ult_pct": 80,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Venture (CARBAGE) engaged near Tree of Life",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "03:26",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v2",
+          "num_state": "numbers_advantage",
+          "player_hp": 120,
+          "ult_pct": 99,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "D.Va mech contesting point during Overtime",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "MFTXPE",
+      "cohort": "diamond_loss",
+      "rank": "Diamond 4",
+      "map": "Colosseo",
+      "ally_comp": [
+        "Winston",
+        "Genji",
+        "Tracer",
+        "Kiriko",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "Roadhog",
+        "Ashe",
+        "Cassidy",
+        "Kiriko",
+        "Baptiste"
+      ],
+      "has_dive_threat": false,
+      "fight_id": 1,
+      "time_range": "00:30 - 01:06",
+      "fight_outcome": "LOST",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "00:34",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 0,
+          "action": "nade:offensive_anti",
+          "target_context": "Enemy frontline in central corridor opening",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "00:36",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 0,
+          "action": "sleep:long_range_poke",
+          "target_context": "Long range poke down main archway choke",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "MFTXPE",
+      "cohort": "diamond_loss",
+      "rank": "Diamond 4",
+      "map": "Colosseo",
+      "ally_comp": [
+        "Winston",
+        "Genji",
+        "Tracer",
+        "Kiriko",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "Roadhog",
+        "Ashe",
+        "Cassidy",
+        "Kiriko",
+        "Baptiste"
+      ],
+      "has_dive_threat": false,
+      "fight_id": 2,
+      "time_range": "01:10 - 02:22",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "01:17",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 52,
+          "action": "nade:offensive_anti",
+          "target_context": "Enemy Roadhog and frontline under bridge",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "01:20",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 56,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Roadhog crossing the street",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "01:33",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v4",
+          "num_state": "numbers_advantage",
+          "player_hp": 241,
+          "ult_pct": 66,
+          "action": "nade:defensive_heal",
+          "target_context": "Friendly Winston engaging contested robot",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "01:52",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v4",
+          "num_state": "numbers_advantage",
+          "player_hp": 250,
+          "ult_pct": 87,
+          "action": "nade:offensive_anti",
+          "target_context": "Clustered fight around central robot path",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "02:17",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v4",
+          "num_state": "numbers_advantage",
+          "player_hp": 115,
+          "ult_pct": 100,
+          "action": "ult_on:Winston",
+          "target_context": "Friendly Winston entering enemy backline",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "MFTXPE",
+      "cohort": "diamond_loss",
+      "rank": "Diamond 4",
+      "map": "Colosseo",
+      "ally_comp": [
+        "Winston",
+        "Genji",
+        "Tracer",
+        "Kiriko",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "Roadhog",
+        "Ashe",
+        "Cassidy",
+        "Kiriko",
+        "Baptiste"
+      ],
+      "has_dive_threat": false,
+      "fight_id": 3,
+      "time_range": "02:23 - 03:10",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "02:26",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v4",
+          "num_state": "numbers_advantage",
+          "player_hp": 250,
+          "ult_pct": 9,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Enemy Orisa in choke corridor",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "MFTXPE",
+      "cohort": "diamond_loss",
+      "rank": "Diamond 4",
+      "map": "Colosseo",
+      "ally_comp": [
+        "Winston",
+        "Genji",
+        "Tracer",
+        "Kiriko",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "Roadhog",
+        "Ashe",
+        "Cassidy",
+        "Kiriko",
+        "Baptiste"
+      ],
+      "has_dive_threat": false,
+      "fight_id": 4,
+      "time_range": "03:15 - 04:12",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "03:51",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v4",
+          "num_state": "numbers_advantage",
+          "player_hp": 250,
+          "ult_pct": 100,
+          "action": "ult_on:Winston",
+          "target_context": "Friendly Winston pushing contested forward bridge",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "04:07",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v4",
+          "num_state": "numbers_advantage",
+          "player_hp": 190,
+          "ult_pct": 20,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Enemy Ashe/Cassidy in narrow side hallway",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "MFTXPE",
+      "cohort": "diamond_loss",
+      "rank": "Diamond 4",
+      "map": "Colosseo",
+      "ally_comp": [
+        "Winston",
+        "Genji",
+        "Tracer",
+        "Kiriko",
+        "Ana"
+      ],
+      "enemy_comp": [
+        "Roadhog",
+        "Ashe",
+        "Cassidy",
+        "Kiriko",
+        "Baptiste"
+      ],
+      "has_dive_threat": false,
+      "fight_id": 5,
+      "time_range": "04:15 - 05:25",
+      "fight_outcome": "LOST",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "05:18",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 232,
+          "ult_pct": 84,
+          "action": "nade:offensive_anti",
+          "target_context": "Enemy team grouped around robot turn",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "NX415N",
+      "cohort": "diamond_loss",
+      "rank": "Diamond 2",
+      "map": "King's Row",
+      "ally_comp": [
+        "Ana",
+        "Doomfist",
+        "Sojourn",
+        "Widowmaker",
+        "Mercy"
+      ],
+      "enemy_comp": [
+        "Junker Queen",
+        "Venture",
+        "Sombra",
+        "Kiriko",
+        "Lucio"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 1,
+      "time_range": "00:45 - 03:40",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "01:10",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 43,
+          "ult_pct": 21,
+          "action": "nade:self_heal",
+          "target_context": "Self-heal at feet after taking critical damage",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "01:23",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 32,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Slept Junker Queen near choke point",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "01:49",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 63,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Slept Junker Queen attempting to push through hotel side entrance",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "02:12",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 80,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Slept Junker Queen in main lane near statue",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "02:36",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 97,
+          "action": "nade:offensive_anti",
+          "target_context": "Thrown into statue brawl targeting enemy front line",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "02:53",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 100,
+          "action": "ult_on:Doomfist",
+          "target_context": "Nano Boosted ally front line tank/brawler",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "03:24",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v4",
+          "num_state": "numbers_advantage",
+          "player_hp": 250,
+          "ult_pct": 13,
+          "action": "nade:defensive_heal",
+          "target_context": "Thrown defensively to heal low hp ally Widowmaker",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "Q9KEG8",
+      "cohort": "diamond_win",
+      "rank": "Diamond 3",
+      "map": "Antarctic Peninsula",
+      "ally_comp": [
+        "Ana",
+        "Reinhardt",
+        "Sombra",
+        "Cassidy",
+        "Juno"
+      ],
+      "enemy_comp": [
+        "Hazard",
+        "Genji",
+        "Sombra",
+        "Kiriko",
+        "Lucio"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 1,
+      "time_range": "00:40 - 00:50",
+      "fight_outcome": "LOST",
+      "player_died": true,
+      "trajectory": [
+        {
+          "t": "00:41",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 0,
+          "action": "sleep:long_range_poke",
+          "target_context": "Long-range poke sleep dart down main corridor towards enemy spawn path",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "00:46",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 37,
+          "ult_pct": 0,
+          "action": "nade:self_heal",
+          "target_context": "Self-heal after taking heavy burst damage from enemy flanker",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "00:49",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "4v5",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 0,
+          "ult_pct": 0,
+          "action": "player_death",
+          "target_context": "Player eliminated by enemy close-range engage",
+          "sleep_on_cd_when_dove": true,
+          "dead_allies": [
+            "Ana"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "Q9KEG8",
+      "cohort": "diamond_win",
+      "rank": "Diamond 3",
+      "map": "Antarctic Peninsula",
+      "ally_comp": [
+        "Ana",
+        "Reinhardt",
+        "Sombra",
+        "Cassidy",
+        "Juno"
+      ],
+      "enemy_comp": [
+        "Hazard",
+        "Genji",
+        "Sombra",
+        "Kiriko",
+        "Lucio"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 2,
+      "time_range": "01:14 - 02:58",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "01:27",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 28,
+          "action": "nade:offensive_anti",
+          "target_context": "Enemy frontline group around control point center",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "02:02",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 72,
+          "action": "nade:defensive_heal",
+          "target_context": "Ally tank and surrounding enemies on point",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "02:25",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v4",
+          "num_state": "numbers_advantage",
+          "player_hp": 250,
+          "ult_pct": 100,
+          "action": "ult_on:Reinhardt",
+          "target_context": "Nano Boost cast on Reinhardt engaging enemy frontline",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "QN4070",
+      "cohort": "diamond_win",
+      "rank": "Diamond 3",
+      "map": "Hollywood",
+      "ally_comp": [
+        "Ana",
+        "Reaper",
+        "Zarya",
+        "Kiriko",
+        "Soldier: 76"
+      ],
+      "enemy_comp": [
+        "D.Va",
+        "Roadhog",
+        "Sojourn",
+        "Kiriko",
+        "Reaper"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 1,
+      "time_range": "00:51 - 01:25",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "00:51",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 13,
+          "action": "nade:offensive_anti",
+          "target_context": "D.Va and Sojourn",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "00:57",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 21,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Sojourn",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "01:00",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 25,
+          "action": "nade:offensive_anti",
+          "target_context": "D.Va",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "SW5Y5Y",
+      "cohort": "gm_win",
+      "rank": "Grandmaster 5",
+      "map": "Adlersbrunn",
+      "ally_comp": [
+        "Ana",
+        "Reinhardt",
+        "Cassidy",
+        "Kiriko",
+        "Soldier: 76"
+      ],
+      "enemy_comp": [
+        "Reinhardt",
+        "Tracer",
+        "Kiriko",
+        "Soldier: 76",
+        "Lucio"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 1,
+      "time_range": "00:53 - 01:10",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "00:53",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 0,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Reinhardt",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "01:11",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 15,
+          "action": "nade:offensive_anti",
+          "target_context": "Reinhardt",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "SW5Y5Y",
+      "cohort": "gm_win",
+      "rank": "Grandmaster 5",
+      "map": "Adlersbrunn",
+      "ally_comp": [
+        "Ana",
+        "Reinhardt",
+        "Cassidy",
+        "Kiriko",
+        "Soldier: 76"
+      ],
+      "enemy_comp": [
+        "Reinhardt",
+        "Tracer",
+        "Kiriko",
+        "Soldier: 76",
+        "Lucio"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 2,
+      "time_range": "01:15 - 01:30",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "01:18",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 232,
+          "ult_pct": 25,
+          "action": "nade:offensive_anti",
+          "target_context": "Reinhardt",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "SW5Y5Y",
+      "cohort": "gm_win",
+      "rank": "Grandmaster 5",
+      "map": "Adlersbrunn",
+      "ally_comp": [
+        "Ana",
+        "Reinhardt",
+        "Cassidy",
+        "Kiriko",
+        "Soldier: 76"
+      ],
+      "enemy_comp": [
+        "Reinhardt",
+        "Tracer",
+        "Kiriko",
+        "Soldier: 76",
+        "Lucio"
+      ],
+      "has_dive_threat": true,
+      "fight_id": 3,
+      "time_range": "02:40 - 03:20",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "02:44",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 50,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Tracer",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "03:19",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "4v4",
+          "num_state": "even_numbers",
+          "player_hp": 190,
+          "ult_pct": 90,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Tracer",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    },
+    {
+      "replay_code": "V89RSK",
+      "cohort": "diamond_win",
+      "rank": "Diamond 3",
+      "map": "Lijiang Tower",
+      "ally_comp": [
+        "Ana",
+        "Juno",
+        "Reinhardt",
+        "Sojourn",
+        "Lanky"
+      ],
+      "enemy_comp": [
+        "Juno",
+        "Reinhardt",
+        "Sojourn",
+        "Lanky",
+        "Ruby"
+      ],
+      "has_dive_threat": false,
+      "fight_id": 1,
+      "time_range": "00:40 - 01:16",
+      "fight_outcome": "LOST",
+      "player_died": true,
+      "trajectory": [
+        {
+          "t": "00:46",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 15,
+          "action": "nade:offensive_anti",
+          "target_context": "enemy team in doorway",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "01:16",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "4v5",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 0,
+          "ult_pct": 29,
+          "action": "player_death",
+          "target_context": null,
+          "sleep_on_cd_when_dove": true,
+          "dead_allies": [
+            "Ana"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "V89RSK",
+      "cohort": "diamond_win",
+      "rank": "Diamond 3",
+      "map": "Lijiang Tower",
+      "ally_comp": [
+        "Ana",
+        "Juno",
+        "Reinhardt",
+        "Sojourn",
+        "Lanky"
+      ],
+      "enemy_comp": [
+        "Juno",
+        "Reinhardt",
+        "Sojourn",
+        "Lanky",
+        "Ruby"
+      ],
+      "has_dive_threat": false,
+      "fight_id": 2,
+      "time_range": "01:30 - 02:59",
+      "fight_outcome": "LOST",
+      "player_died": true,
+      "trajectory": [
+        {
+          "t": "01:33",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 35,
+          "action": "nade:offensive_anti",
+          "target_context": "enemy team in doorway",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "02:59",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "4v5",
+          "num_state": "numbers_disadvantage",
+          "player_hp": 0,
+          "ult_pct": 83,
+          "action": "player_death",
+          "target_context": null,
+          "sleep_on_cd_when_dove": true,
+          "dead_allies": [
+            "Ana"
+          ]
+        }
+      ]
+    },
+    {
+      "replay_code": "V89RSK",
+      "cohort": "diamond_win",
+      "rank": "Diamond 3",
+      "map": "Lijiang Tower",
+      "ally_comp": [
+        "Ana",
+        "Juno",
+        "Reinhardt",
+        "Sojourn",
+        "Lanky"
+      ],
+      "enemy_comp": [
+        "Juno",
+        "Reinhardt",
+        "Sojourn",
+        "Lanky",
+        "Ruby"
+      ],
+      "has_dive_threat": false,
+      "fight_id": 3,
+      "time_range": "03:11 - 03:40",
+      "fight_outcome": "WON",
+      "player_died": false,
+      "trajectory": [
+        {
+          "t": "03:22",
+          "seq_pos": "first_action_in_fight",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 15,
+          "action": "sleep:close_or_mid_target",
+          "target_context": "Lanky",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        },
+        {
+          "t": "03:25",
+          "seq_pos": "mid_or_late_fight_action",
+          "alive_ratio": "5v5",
+          "num_state": "even_numbers",
+          "player_hp": 250,
+          "ult_pct": 16,
+          "action": "nade:offensive_anti",
+          "target_context": "Lanky",
+          "sleep_on_cd_when_dove": false,
+          "dead_allies": []
+        }
+      ]
+    }
+  ]
+}
