@@ -19,7 +19,7 @@
       "mean_poke_lottery_sleep_ratio": 0.05,
       "mean_disciplined_sleep_win_conversion": 0.4,
       "mean_total_deaths": 1.2,
-      "mean_sleep_cd_death_rate": 0.2,
+      "mean_sleep_cd_death_rate": 0.0,
       "mean_ult_fight_win_conversion": 0.6,
       "mean_unconverted_disadv_ult_rate": 0.0
     },
@@ -40,7 +40,7 @@
       "mean_poke_lottery_sleep_ratio": 0.2,
       "mean_disciplined_sleep_win_conversion": 0.8,
       "mean_total_deaths": 0.8,
-      "mean_sleep_cd_death_rate": 0.6,
+      "mean_sleep_cd_death_rate": 0.4,
       "mean_ult_fight_win_conversion": 0.4,
       "mean_unconverted_disadv_ult_rate": 0.0
     },
@@ -61,7 +61,7 @@
       "mean_poke_lottery_sleep_ratio": 0.233,
       "mean_disciplined_sleep_win_conversion": 0.5,
       "mean_total_deaths": 0.6,
-      "mean_sleep_cd_death_rate": 0.3,
+      "mean_sleep_cd_death_rate": 0.2,
       "mean_ult_fight_win_conversion": 0.4,
       "mean_unconverted_disadv_ult_rate": 0.0
     }
@@ -222,8 +222,8 @@
         "poke_lottery_sleep_ratio": 0.0,
         "disciplined_sleep_win_conversion": 0.0,
         "total_deaths": 1,
-        "sleep_cd_deaths": 1,
-        "sleep_cd_death_rate": 1.0,
+        "sleep_cd_deaths": 0,
+        "sleep_cd_death_rate": 0.0,
         "total_ults": 0,
         "ult_fight_win_conversion": 0.0,
         "unconverted_disadv_ult_rate": 0.0,
@@ -234,7 +234,7 @@
         "hud_grounding_score": 1.0,
         "zero_platitude_score": 1.0,
         "habit_quantification_score": 1.0,
-        "critique_count": 2
+        "critique_count": 1
       }
     },
     "QN4070": {
@@ -358,8 +358,8 @@
         "poke_lottery_sleep_ratio": 0.0,
         "disciplined_sleep_win_conversion": 1.0,
         "total_deaths": 1,
-        "sleep_cd_deaths": 1,
-        "sleep_cd_death_rate": 1.0,
+        "sleep_cd_deaths": 0,
+        "sleep_cd_death_rate": 0.0,
         "total_ults": 2,
         "ult_fight_win_conversion": 1.0,
         "unconverted_disadv_ult_rate": 0.0,
@@ -528,8 +528,8 @@
         "poke_lottery_sleep_ratio": 0.667,
         "disciplined_sleep_win_conversion": 1.0,
         "total_deaths": 2,
-        "sleep_cd_deaths": 1,
-        "sleep_cd_death_rate": 0.5,
+        "sleep_cd_deaths": 0,
+        "sleep_cd_death_rate": 0.0,
         "total_ults": 1,
         "ult_fight_win_conversion": 0.0,
         "unconverted_disadv_ult_rate": 0.0,
@@ -540,7 +540,7 @@
         "hud_grounding_score": 1.0,
         "zero_platitude_score": 1.0,
         "habit_quantification_score": 1.0,
-        "critique_count": 3
+        "critique_count": 2
       }
     },
     "CP9GCK": {

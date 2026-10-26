@@ -48,7 +48,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "ready",
+          "e_cd_state": "used->cd:12s"
         },
         {
           "t": "01:06",
@@ -68,7 +70,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "ready",
+          "e_cd_state": "used->cd:12s"
         }
       ]
     },
@@ -95,7 +99,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "used->cd:14s",
+          "e_cd_state": "ready"
         },
         {
           "t": "01:50",
@@ -115,7 +121,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "cd:7s",
+          "e_cd_state": "used->cd:12s"
         },
         {
           "t": "02:16",
@@ -135,7 +143,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "used->cd:14s",
+          "e_cd_state": "ready"
         },
         {
           "t": "02:19",
@@ -155,7 +165,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "cd:11s",
+          "e_cd_state": "ready"
         },
         {
           "t": "02:32",
@@ -173,11 +185,13 @@
           "nade_usage": null,
           "ult_target": null,
           "killed_by": "Tracer",
-          "sleep_on_cd_when_dove": true,
-          "sleep_cd_remaining_sec": 6,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "ready",
+          "e_cd_state": "ready"
         }
       ]
     },
@@ -204,7 +218,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "used->cd:14s",
+          "e_cd_state": "ready"
         },
         {
           "t": "03:52",
@@ -224,7 +240,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "cd:12s",
+          "e_cd_state": "used->cd:12s"
         },
         {
           "t": "04:09",
@@ -244,7 +262,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "ready",
+          "e_cd_state": "used->cd:12s"
         }
       ]
     },
@@ -271,7 +291,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "ready",
+          "e_cd_state": "used->cd:12s"
         },
         {
           "t": "04:45",
@@ -291,7 +313,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "ready",
+          "e_cd_state": "used->cd:12s"
         },
         {
           "t": "05:15",
@@ -313,7 +337,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "ready",
+          "e_cd_state": "ready"
         }
       ]
     }

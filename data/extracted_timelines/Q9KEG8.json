@@ -48,7 +48,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "used->cd:14s",
+          "e_cd_state": "ready"
         },
         {
           "t": "00:46",
@@ -68,7 +70,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "cd:9s",
+          "e_cd_state": "used->cd:12s"
         },
         {
           "t": "00:49",
@@ -87,10 +91,12 @@
           "ult_target": null,
           "killed_by": "Hazard",
           "sleep_on_cd_when_dove": true,
-          "sleep_cd_remaining_sec": 9,
+          "sleep_cd_remaining_sec": 6,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "cd:6s",
+          "e_cd_state": "cd:9s"
         }
       ]
     },
@@ -117,7 +123,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "ready",
+          "e_cd_state": "used->cd:12s"
         },
         {
           "t": "02:02",
@@ -137,7 +145,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "ready",
+          "e_cd_state": "used->cd:12s"
         },
         {
           "t": "02:25",
@@ -157,7 +167,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": null,
           "duration_sec": null,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "ready",
+          "e_cd_state": "ready"
         }
       ]
     }

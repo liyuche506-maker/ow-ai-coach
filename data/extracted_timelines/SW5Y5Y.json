@@ -48,7 +48,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": 100,
           "duration_sec": 0,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "used->cd:14s",
+          "e_cd_state": "ready"
         },
         {
           "t": "01:11",
@@ -68,7 +70,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": 100,
           "duration_sec": 0,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "ready",
+          "e_cd_state": "used->cd:12s"
         }
       ]
     },
@@ -95,7 +99,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": 90,
           "duration_sec": 0,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "ready",
+          "e_cd_state": "used->cd:12s"
         }
       ]
     },
@@ -122,7 +128,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": 100,
           "duration_sec": 0,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "used->cd:14s",
+          "e_cd_state": "ready"
         },
         {
           "t": "03:19",
@@ -142,7 +150,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": 80,
           "duration_sec": 0,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "used->cd:14s",
+          "e_cd_state": "ready"
         }
       ]
     }

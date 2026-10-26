@@ -48,7 +48,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": 100,
           "duration_sec": 0,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "ready",
+          "e_cd_state": "used->cd:12s"
         },
         {
           "t": "00:57",
@@ -68,7 +70,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": 100,
           "duration_sec": 0,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "used->cd:14s",
+          "e_cd_state": "cd:6s"
         },
         {
           "t": "01:00",
@@ -88,7 +92,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": 100,
           "duration_sec": 0,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "cd:11s",
+          "e_cd_state": "used->cd:12s"
         }
       ]
     }

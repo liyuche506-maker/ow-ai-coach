@@ -48,7 +48,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": 100,
           "duration_sec": 0,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "ready",
+          "e_cd_state": "used->cd:12s"
         },
         {
           "t": "00:58",
@@ -68,7 +70,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": 100,
           "duration_sec": 0,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "used->cd:14s",
+          "e_cd_state": "ready"
         }
       ]
     },
@@ -95,7 +99,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": 100,
           "duration_sec": 0,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "used->cd:14s",
+          "e_cd_state": "ready"
         },
         {
           "t": "02:45",
@@ -114,10 +120,12 @@
           "ult_target": null,
           "killed_by": "Winston",
           "sleep_on_cd_when_dove": true,
-          "sleep_cd_remaining_sec": 10,
+          "sleep_cd_remaining_sec": 7,
           "ally_hp_pct": 0,
           "duration_sec": 0,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "cd:7s",
+          "e_cd_state": "ready"
         }
       ]
     }

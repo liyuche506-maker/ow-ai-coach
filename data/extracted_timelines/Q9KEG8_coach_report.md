@@ -22,5 +22,5 @@
 - **Actionable Fix**: Do not chuck long-range purple nades during early 5v5 poke before your Tank has closed distance—enemy Kiriko/Baptiste will cleanse or wait it out. Hold Biotic Grenade until your Tank commits onto a target or a flanker commits onto you.
 
 ### [Fight #1 | 00:49] `ANA_DIA_02` (CRITICAL)
-- **HUD Fact Diagnosis**: At [00:49] (4v5, Fight #1 LOST), against enemy threats (Hazard / Genji / Sombra / Kiriko / Lucio), you were eliminated by Hazard after firing a poke Sleep Dart at [00:41] (Long-range poke sleep dart down main corridor towards enemy spawn path) (9s cooldown remaining at death).
+- **HUD Fact Diagnosis**: At [00:49] (4v5, Fight #1 LOST), against enemy threats (Hazard / Genji / Sombra / Kiriko / Lucio), you were eliminated by Hazard after firing a poke Sleep Dart at [00:41] (Long-range poke sleep dart down main corridor towards enemy spawn path) (6s cooldown remaining at death).
 - **Actionable Fix**: Across our 15-match dataset, every fight where Ana died with Sleep Dart on cooldown resulted in a 100% fight loss, whereas disciplined anti-flanker sleeps converted up to 80-100% of fights into wins. Never fire long-range poke Sleep Darts down main corridors when enemy flankers/dive tanks are alive.

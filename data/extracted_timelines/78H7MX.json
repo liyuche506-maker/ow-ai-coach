@@ -48,7 +48,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": 100,
           "duration_sec": 0,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "ready",
+          "e_cd_state": "used->cd:12s"
         },
         {
           "t": "00:50",
@@ -68,7 +70,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": 100,
           "duration_sec": 0,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "used->cd:14s",
+          "e_cd_state": "cd:7s"
         },
         {
           "t": "01:25",
@@ -90,7 +94,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": 100,
           "duration_sec": 0,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "used->cd:14s",
+          "e_cd_state": "ready"
         },
         {
           "t": "01:57",
@@ -113,7 +119,9 @@
           "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": 100,
           "duration_sec": 0,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "used->cd:14s",
+          "e_cd_state": "ready"
         },
         {
           "t": "02:20",
@@ -133,11 +141,13 @@
           "nade_usage": null,
           "ult_target": null,
           "killed_by": "Ramattra",
-          "sleep_on_cd_when_dove": true,
-          "sleep_cd_remaining_sec": 4,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
           "ally_hp_pct": 0,
           "duration_sec": 0,
-          "exposed_enemy": null
+          "exposed_enemy": null,
+          "shift_cd_state": "ready",
+          "e_cd_state": "ready"
         }
       ]
     }

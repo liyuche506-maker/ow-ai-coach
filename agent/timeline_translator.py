@@ -5,7 +5,9 @@ structured, objective MatchTimeline JSON focused on HUD facts:
 - Top-right Killfeed -> alive_ratio (e.g., "5v5", "4v5", "3v5") & dead_allies
 - Bottom-left HUD -> player_hp
 - Bottom-center HUD -> ult_charge_pct
-- Bottom-right HUD -> sleep_dart_state ("ready" | "cd:Xs"), biotic_nade_state ("ready" | "cd:Xs")
+- Bottom-right HUD -> shift_cd_state ("ready" | "cd:Xs"), e_cd_state ("ready" | "cd:Xs")
+- Audio Cues -> Sleep Dart firing/hit audio, Biotic Grenade splash/anti audio, Ultimate voice lines
+- Deterministic Cooldown Physics Post-Processor -> Enforces exact 14s Sleep Dart & 12s Biotic Grenade cooldown timers
 """
 
 import json
@@ -17,18 +19,26 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 
 DEFAULT_MODEL = "models/gemini-3.5-flash"
-FALLBACK_MODELS = ["models/gemini-3.5-flash", "models/gemini-3.1-flash-lite", "models/gemini-3.8-flash"]
+FALLBACK_MODELS = [
+    "models/gemini-3.5-flash",
+    "models/gemini-3.1-flash-lite",
+    "models/gemini-3.8-flash",
+]
 
-TIMELINE_EXTRACTION_SYSTEM_PROMPT = """You are an objective Overwatch 2 HUD & Fight Telemetry Extractor.
-Do NOT give coaching advice. Your ONLY job is to read the 16:9 first-person HUD and output a factual JSON timeline of teamfights.
+SLEEP_DART_COOLDOWN_SEC = 14
+BIOTIC_NADE_COOLDOWN_SEC = 12
 
-For each teamfight in the video segment, inspect these 4 fixed screen regions:
-1. Top-Right (Killfeed): Track who died on each team to maintain the live `alive_ratio` (e.g. "5v5", "4v5", "3v5") and list `dead_allies`.
+TIMELINE_EXTRACTION_SYSTEM_PROMPT = """You are an objective Overwatch 2 HUD & Audio-Visual Fight Telemetry Extractor.
+Do NOT give coaching advice. Your ONLY job is to read the 16:9 first-person HUD + listen to game audio cues and output a factual JSON timeline of teamfights.
+
+For each teamfight in the video segment, inspect these 4 fixed screen regions and fuse with audio cues:
+1. Top-Right (Killfeed + Elimination Audio): Track who died on each team to maintain the live `alive_ratio` (e.g. "5v5", "5v4", "4v5") and list `dead_allies`.
 2. Bottom-Left (Health Bar): Track `player_hp` (0 to 250) and whether the player is purple (anti-healed).
 3. Bottom-Center (Ultimate Meter): Track `ult_charge_pct` (0 to 100).
-4. Bottom-Right (Ability Icons):
-   - Shift (Sleep Dart): Track `sleep_dart_used`, whether it was a long-range poke/lottery shot (`is_poke_lottery_sleep`: true/false), and if the player dies (`player_death`), whether Sleep Dart was on cooldown (`sleep_on_cd_when_dove`: true/false, `sleep_cd_remaining_sec`).
-   - E (Biotic Grenade): When thrown (`biotic_nade_used`), classify `nade_usage` strictly into one of: `"offensive_anti"`, `"defensive_heal"`, or `"self_heal"`.
+4. Bottom-Right (Ability Icons + Ability Sound Effects):
+   - Continuously report `shift_cd_state` ("ready" or "cd:Xs") and `e_cd_state` ("ready" or "cd:Xs") at every logged event.
+   - Shift (Sleep Dart, 14s cooldown): Use both the dart gun firing sound and HUD icon to log `sleep_dart_used`, whether it was a long-range poke/lottery shot (`is_poke_lottery_sleep`: true/false), and if the player dies (`player_death`), whether Sleep Dart was on cooldown (`sleep_on_cd_when_dove`: true/false, `sleep_cd_remaining_sec`).
+   - E (Biotic Grenade, 12s cooldown): Use both the glass shatter/splash sound and HUD icon to log `biotic_nade_used`, classifying `nade_usage` strictly into: `"offensive_anti"`, `"defensive_heal"`, or `"self_heal"`.
    - Also flag `overheal_tunnel` when the player stays hard-scoped >3.5s shooting allies who are already >85% HP while enemies are exposed.
 
 Return ONLY valid JSON matching the exact schema requested."""
@@ -63,6 +73,8 @@ Output a JSON object with this exact structure:
           "dead_allies": [],
           "player_hp": 250,
           "ult_charge_pct": 45,
+          "shift_cd_state": "ready" | "cd:Xs",
+          "e_cd_state": "ready" | "cd:Xs",
           "event_type": "sleep_dart_used" | "biotic_nade_used" | "ult_used" | "player_death" | "overheal_tunnel",
           "target": "concise factual description of target and context",
           "is_poke_lottery_sleep": false,
@@ -79,6 +91,70 @@ Output a JSON object with this exact structure:
     }}
   ]
 }}"""
+
+
+def _to_sec(mm_ss: Any) -> Optional[float]:
+    if not mm_ss or ":" not in str(mm_ss):
+        return None
+    parts = str(mm_ss).strip().split(":")
+    try:
+        if len(parts) == 3:
+            return int(parts[0]) * 3600 + int(parts[1]) * 60 + float(parts[2])
+        return int(parts[0]) * 60 + float(parts[1])
+    except ValueError:
+        return None
+
+
+def enforce_cooldown_physics(timeline: Dict[str, Any]) -> Dict[str, Any]:
+    """Deterministically verify and backfill `shift_cd_state`, `e_cd_state`, and `sleep_on_cd_when_dove`
+    using Overwatch 2's exact 14s Sleep Dart and 12s Biotic Grenade cooldown timers."""
+    last_sleep_sec: Optional[float] = None
+    last_nade_sec: Optional[float] = None
+
+    for fight in timeline.get("fights", []):
+        for ev in fight.get("events", []):
+            cur_sec = _to_sec(ev.get("t"))
+            etype = ev.get("event_type")
+
+            if cur_sec is not None:
+                # Compute true cooldown state at the moment just before this event
+                if last_sleep_sec is not None and (cur_sec - last_sleep_sec) >= 0:
+                    rem_s = round(SLEEP_DART_COOLDOWN_SEC - (cur_sec - last_sleep_sec), 1)
+                    if rem_s > 0:
+                        ev["shift_cd_state"] = f"cd:{int(round(rem_s))}s"
+                        if etype == "player_death":
+                            ev["sleep_on_cd_when_dove"] = True
+                            ev["sleep_cd_remaining_sec"] = int(round(rem_s))
+                    else:
+                        ev["shift_cd_state"] = "ready"
+                        if etype == "player_death":
+                            ev["sleep_on_cd_when_dove"] = False
+                            ev["sleep_cd_remaining_sec"] = 0
+                else:
+                    ev.setdefault("shift_cd_state", "ready")
+
+                if last_nade_sec is not None and (cur_sec - last_nade_sec) >= 0:
+                    rem_e = round(BIOTIC_NADE_COOLDOWN_SEC - (cur_sec - last_nade_sec), 1)
+                    if rem_e > 0:
+                        ev["e_cd_state"] = f"cd:{int(round(rem_e))}s"
+                    else:
+                        ev["e_cd_state"] = "ready"
+                else:
+                    ev.setdefault("e_cd_state", "ready")
+
+                # Update last used timestamps when abilities are triggered
+                if etype == "sleep_dart_used":
+                    last_sleep_sec = cur_sec
+                    ev["shift_cd_state"] = f"used->cd:{SLEEP_DART_COOLDOWN_SEC}s"
+                elif etype == "biotic_nade_used":
+                    last_nade_sec = cur_sec
+                    ev["e_cd_state"] = f"used->cd:{BIOTIC_NADE_COOLDOWN_SEC}s"
+                elif etype == "player_death":
+                    # Respawn resets cooldown tracking for next fight
+                    last_sleep_sec = None
+                    last_nade_sec = None
+
+    return timeline
 
 
 def load_api_key(explicit_key: Optional[str] = None) -> str:
@@ -127,7 +203,6 @@ def translate_vod_with_gemini(
         youtube_url=youtube_url,
     )
 
-    url = f"https://generativelanguage.googleapis.com/v1beta/{model}:generateContent?key={key}"
     payload = {
         "systemInstruction": {
             "parts": [{"text": TIMELINE_EXTRACTION_SYSTEM_PROMPT}]
@@ -157,7 +232,11 @@ def translate_vod_with_gemini(
 
     last_err: Optional[Exception] = None
     for attempt in range(1, max_retries + 1):
-        active_model = FALLBACK_MODELS[(attempt - 1) % len(FALLBACK_MODELS)] if model == DEFAULT_MODEL else model
+        active_model = (
+            FALLBACK_MODELS[(attempt - 1) % len(FALLBACK_MODELS)]
+            if model == DEFAULT_MODEL
+            else model
+        )
         active_url = f"https://generativelanguage.googleapis.com/v1beta/{active_model}:generateContent?key={key}"
         try:
             req = urllib.request.Request(
@@ -170,6 +249,7 @@ def translate_vod_with_gemini(
 
             raw_json = body["candidates"][0]["content"]["parts"][0]["text"]
             timeline = json.loads(raw_json)
+            timeline = enforce_cooldown_physics(timeline)
             timeline["_token_usage"] = body.get("usageMetadata", {})
             timeline["_model_used"] = active_model
             return timeline
