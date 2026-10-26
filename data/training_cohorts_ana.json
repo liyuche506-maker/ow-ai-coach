@@ -1,5 +1,62 @@
 {
-  "diamond_ana": [
+  "diamond_loss": [
+    {
+      "replay_code": "92EMFN",
+      "title": "Matchmaking",
+      "player": "Pauper",
+      "rank": "Diamond 4",
+      "map": "King's Row",
+      "outcome": "loss",
+      "duration": "00:11:50",
+      "description": "",
+      "youtube_url": "https://www.youtube.com/watch?v=cGPnyExSZok"
+    },
+    {
+      "replay_code": "MFTXPE",
+      "title": "Flanking Ana",
+      "player": "DRE",
+      "rank": "Diamond 4",
+      "map": "Colosseo",
+      "outcome": "loss",
+      "duration": "00:12:06",
+      "description": "",
+      "youtube_url": "https://www.youtube.com/watch?v=PRih_BFalY0"
+    },
+    {
+      "replay_code": "NX415N",
+      "title": "Ana skamy",
+      "player": "skamy",
+      "rank": "Diamond 2",
+      "map": "King's Row",
+      "outcome": "loss",
+      "duration": "00:16:17",
+      "description": "",
+      "youtube_url": "https://www.youtube.com/watch?v=y2yJ-iEWYec"
+    },
+    {
+      "replay_code": "BV0VA4",
+      "title": "playing ana in higher level as low level",
+      "player": "sleeptite",
+      "rank": "Diamond 4",
+      "map": "Circuit Royal",
+      "outcome": "loss",
+      "duration": "00:20:21",
+      "description": "What can I do to improve for most of the game? My positioning just felt off in general",
+      "youtube_url": "https://www.youtube.com/watch?v=68pDMuhhzBk"
+    },
+    {
+      "replay_code": "78H7MX",
+      "title": "12-8 Ana Nepal Loss",
+      "player": "Lala",
+      "rank": "Diamond 4",
+      "map": "Nepal",
+      "outcome": "loss",
+      "duration": "00:14:51",
+      "description": "I got tilted after the first round Sadge",
+      "youtube_url": "https://www.youtube.com/watch?v=ucE1hcrqYQg"
+    }
+  ],
+  "diamond_win": [
     {
       "replay_code": "QN4070",
       "title": "goated ass ana game",
@@ -8,6 +65,7 @@
       "map": "Hollywood",
       "outcome": "win",
       "duration": "00:24:08",
+      "description": "",
       "youtube_url": "https://www.youtube.com/watch?v=fCLHZO7fsZ8"
     },
     {
@@ -18,6 +76,7 @@
       "map": "Lijiang Tower",
       "outcome": "win",
       "duration": "00:16:24",
+      "description": "",
       "youtube_url": "https://www.youtube.com/watch?v=D-Bsj0aNoPo"
     },
     {
@@ -28,6 +87,7 @@
       "map": "New Junk City",
       "outcome": "win",
       "duration": "00:14:15",
+      "description": "",
       "youtube_url": "https://www.youtube.com/watch?v=hGWJHwOj7zc"
     },
     {
@@ -38,10 +98,33 @@
       "map": "New Queen Street",
       "outcome": "win",
       "duration": "00:10:44",
+      "description": "",
       "youtube_url": "https://www.youtube.com/watch?v=Z6TserShEPY"
+    },
+    {
+      "replay_code": "Q9KEG8",
+      "title": "Ana2",
+      "player": "귀찮아",
+      "rank": "Diamond 3",
+      "map": "Antarctic Peninsula",
+      "outcome": "win",
+      "duration": "00:08:06",
+      "description": "",
+      "youtube_url": "https://www.youtube.com/watch?v=SYemWE-_aTk"
     }
   ],
-  "master_gm_ana": [
+  "gm_win": [
+    {
+      "replay_code": "DA9Z8T",
+      "title": "What a champ Ana POV look like in a low GM lobby",
+      "player": "BIZ",
+      "rank": "Grandmaster 3",
+      "map": "Esperança",
+      "outcome": "win",
+      "duration": "00:10:59",
+      "description": "",
+      "youtube_url": "https://www.youtube.com/watch?v=dW9JXsa_INE"
+    },
     {
       "replay_code": "SW5Y5Y",
       "title": "김이준 아픈 손가락들 데리고 이기기 힘드네",
@@ -50,6 +133,7 @@
       "map": "Adlersbrunn",
       "outcome": "win",
       "duration": "00:19:48",
+      "description": "",
       "youtube_url": "https://www.youtube.com/watch?v=859IM0xMiCc"
     },
     {
@@ -60,6 +144,7 @@
       "map": "Havana",
       "outcome": "win",
       "duration": "00:14:39",
+      "description": "still some mistakes but was fun game",
       "youtube_url": "https://www.youtube.com/watch?v=KR55aTHtEfk"
     },
     {
@@ -70,6 +155,7 @@
       "map": "New Queen Street",
       "outcome": "win",
       "duration": "00:08:26",
+      "description": "I hit those",
       "youtube_url": "https://www.youtube.com/watch?v=e3QqGz0gRCQ"
     },
     {
@@ -80,6 +166,7 @@
       "map": "Runasapi",
       "outcome": "win",
       "duration": "00:10:32",
+      "description": "",
       "youtube_url": "https://www.youtube.com/watch?v=PFR-W-_vrQ4"
     }
   ]

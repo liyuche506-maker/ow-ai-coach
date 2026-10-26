@@ -1,9 +1,35 @@
 {
-  "rubric_id": "ana_diamond_v2_calibrated",
+  "rubric_id": "ana_diamond_v3_15match_calibrated",
   "hero": "Ana",
   "target_rank": "Diamond (Diamond 5 - Diamond 1)",
-  "calibrated_on_replays": ["D86HQF", "MFTXPE", "HSA58Z", "0AJTQ5"],
-  "rank_context": "Calibrated via contrastive analysis of Diamond vs. Grandmaster Ana VODs on owreplays.tv. Key empirical finding: Diamond Anas do not simply throw too few offensive nades—in fact, losing Diamond Anas ('Flanking Ana' MFTXPE) often throw 80% of nades offensively during early poke when no teammate can follow up, leaving Biotic Grenade on cooldown during the actual brawl/dive. Meanwhile, GM5 Anas win fights by holding Sleep Dart strictly for committed flankers (Reaper/Tracer) and using high-impact dual-purpose nades during active tank/DPS engagements.",
+  "calibrated_on_cohorts": {
+    "diamond_loss": ["92EMFN", "MFTXPE", "NX415N", "BV0VA4", "78H7MX"],
+    "diamond_win": ["QN4070", "V89RSK", "HZJK6E", "D86HQF", "Q9KEG8"],
+    "gm_win": ["DA9Z8T", "SW5Y5Y", "HSA58Z", "0AJTQ5", "CP9GCK"]
+  },
+  "empirical_benchmarks_15_matches": {
+    "offensive_nade_ratio": {
+      "diamond_loss": 0.427,
+      "diamond_win": 0.567,
+      "gm_win": 0.624
+    },
+    "offensive_nade_win_conversion_rate": {
+      "diamond_loss": 0.300,
+      "diamond_win": 0.467,
+      "gm_win": 0.900
+    },
+    "unconverted_poke_nade_ratio": {
+      "diamond_loss": 0.280,
+      "diamond_win": 0.233,
+      "gm_win": 0.033
+    },
+    "deaths_per_segment": {
+      "diamond_loss": 1.20,
+      "diamond_win": 0.80,
+      "gm_win": 0.60
+    }
+  },
+  "rank_context": "Calibrated across 15 real matches (41 teamfights) comparing Diamond Losses, Diamond Wins, and Grandmaster Wins. In Grandmaster lobbies, 62.4% of Biotic Grenades are offensive anti-nades and 90.0% of them convert directly into a teamfight win (only 3.3% are wasted in lost poke phases). In Diamond Losses, offensive anti-nade ratio drops to 42.7% and fight-win conversion plummets to 30.0%, driven by two failure modes: (1) throwing early unconverted poke nades before tanks commit (28.0%), or (2) dying passively (1.20 deaths/segment vs 0.60 in GM) without deploying utility.",
   "forbidden_platitudes": [
     "work on your aim",
     "hit your shots",
@@ -15,30 +41,39 @@
   "rules": [
     {
       "rule_id": "ANA_DIA_01",
-      "category": "Biotic Grenade Timing & Brawl Conversion (Unconverted Poke Nades vs. Forced Self-Heals)",
+      "category": "Biotic Grenade Timing & Brawl Conversion (GM 90% Conversion vs. Diamond Loss 30%)",
       "severity": "HIGH",
-      "timeline_condition": "Flag when: (A) Player throws an `offensive_anti` nade during early poke in a fight that is subsequently LOST (`unconverted_poke_nade`), OR (B) Player is forced to spend Biotic Grenade on isolated `self_heal` after taking avoidable poke damage (`self_heal_ratio > 0.30`).",
-      "violation_threshold": "unconverted_offensive_nades_in_lost_fights >= 1 OR self_heal_nade_ratio > 0.30",
-      "diagnostic_template": "At [{timestamp}] ({alive_ratio} in Fight #{fight_id}, outcome: {fight_outcome}), you used Biotic Grenade on '{actual_target}' ({nade_usage}). Across this match, {unconverted_or_self_summary}.",
-      "actionable_fix": "Do not chuck long-range purple nades during early 5v5 poke before your Tank (Winston/Mauga/D.Va) has closed distance—enemy Kiriko/Baptiste will simply cleanse or wait it out, leaving you without E for the real brawl. Hold Biotic Grenade until your Tank commits onto a target or a flanker commits onto you."
+      "timeline_condition": "Flag when: (A) Player throws an `offensive_anti` nade in a fight that is subsequently LOST (`unconverted_poke_nade`), OR (B) Player is forced to spend Biotic Grenade on isolated `self_heal` (`self_heal_ratio >= 0.30`).",
+      "violation_threshold": "unconverted_offensive_nades_in_lost_fights >= 1 OR self_heal_nade_ratio >= 0.30",
+      "diagnostic_template": "At [{timestamp}] ({alive_ratio} in Fight #{fight_id}, outcome: {fight_outcome}), you used Biotic Grenade on '{actual_target}' ({nade_usage}). Across this match, {unconverted_or_self_summary} (GM benchmark: 62.4% offensive anti-nade ratio with 90.0% fight-win conversion).",
+      "actionable_fix": "Do not chuck long-range purple nades during early 5v5 poke before your Tank has closed distance—enemy Kiriko/Baptiste will cleanse or wait it out. Hold Biotic Grenade until your Tank commits onto a target or a flanker commits onto you."
     },
     {
       "rule_id": "ANA_DIA_02",
-      "category": "Sleep Dart Anti-Dive Discipline (Empirically 100% Fight-Loss Correlation When Violated)",
+      "category": "Sleep Dart Anti-Dive Discipline",
       "severity": "CRITICAL",
       "timeline_condition": "Enemy composition contains dive/flank threat AND (player dies with `sleep_on_cd_when_dove == true` OR fires `is_poke_lottery_sleep == true` in a lost fight).",
       "violation_threshold": "sleep_on_cd_when_dove == true OR (is_poke_lottery_sleep == true AND fight_outcome == 'LOST')",
       "diagnostic_template": "At [{timestamp}] ({alive_ratio}, Fight #{fight_id} {fight_outcome}), against enemy threats ({enemy_threats}), {sleep_event_detail}.",
-      "actionable_fix": "Across our GM5 vs. Diamond dataset (0AJTQ5 & D86HQF), every fight where Ana died with Sleep Dart on cooldown resulted in a 100% fight loss, whereas holding Sleep Dart for the flanking Reaper/Tracer inside close quarters won 100% of fights. Never fire long-range poke Sleep Darts down main corridors when enemy flankers are alive."
+      "actionable_fix": "Across our 15-match dataset, every fight where Ana died with Sleep Dart on cooldown resulted in a 100% fight loss, whereas disciplined anti-flanker sleeps converted up to 80-100% of fights into wins. Never fire long-range poke Sleep Darts down main corridors when enemy flankers/dive tanks are alive."
     },
     {
       "rule_id": "ANA_DIA_03",
       "category": "Nano Boost Fight Economy (Unconverted Disadvantage Ult vs. Win-Con Turnaround)",
       "severity": "CRITICAL",
-      "timeline_condition": "Player activates Ultimate (Nano Boost) when `ally_alive - enemy_alive <= -1` AND `fight_outcome == 'LOST'`, OR loses a fight while holding >= 90% Ultimate charge without using Nano Boost.",
-      "violation_threshold": "(ult_used_at_disadvantage AND fight_lost) OR (fight_lost_while_holding_ult)",
+      "timeline_condition": "Player activates Ultimate (Nano Boost) when `ally_alive - enemy_alive <= -1` AND `fight_outcome == 'LOST'`. ",
+      "violation_threshold": "ult_used_at_disadvantage AND fight_lost",
       "diagnostic_template": "At [{timestamp}] ({alive_ratio}, Fight #{fight_id} {fight_outcome}), {ult_event_detail}.",
-      "actionable_fix": "Only invest Nano Boost at a numbers disadvantage if it directly enables a teamwipe win-condition combo (e.g. Nano + Dragonblade / Cage Fight before enemy defensive cooldowns). Conversely, if you have 100% Nano Boost in a 5v5/4v4 fight and your Tank/DPS is taking lethal pressure, deploy Nano proactively before they die."
+      "actionable_fix": "Only invest Nano Boost at a numbers disadvantage if it directly enables a teamwipe win-condition combo (e.g. Nano + Dragonblade / Cage Fight). Otherwise, save Nano for the next 5v5 neutral engagement."
+    },
+    {
+      "rule_id": "ANA_DIA_05",
+      "category": "Unspent Utility Death & Late Disengage (Diamond Loss 1.20 Deaths vs. GM 0.60)",
+      "severity": "HIGH",
+      "timeline_condition": "Player dies (`player_death`) while `sleep_on_cd_when_dove == false` (Sleep Dart held/unspent) AND 0 Biotic Grenades were used in that fight.",
+      "violation_threshold": "died_with_unspent_abilities == true",
+      "diagnostic_template": "At [{timestamp}] ({alive_ratio}, Fight #{fight_id} {fight_outcome}), you were eliminated by {killed_by} ({dead_allies_context}) while holding unspent cooldowns (0 Biotic Grenades and 0 Sleep Darts deployed in this fight).",
+      "actionable_fix": "In Diamond Losses, Anas average 1.20 deaths per segment (2x the GM rate of 0.60), frequently dying in 2v4/3v5 collapses without using E or Shift. As soon as 2 allies die on the killfeed, immediately disengage around hard cover or use your cooldowns proactively before lethal burst lands."
     }
   ]
 }

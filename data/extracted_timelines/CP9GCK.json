@@ -1,0 +1,123 @@
+{
+  "match_meta": {
+    "replay_code": "CP9GCK",
+    "title": "Ana game vs Emongg, Somnus, Beaver",
+    "player": "Art",
+    "hero": "Ana",
+    "rank": "Grandmaster 3",
+    "map": "Runasapi",
+    "outcome": "win",
+    "duration": "00:10:32",
+    "youtube_url": "https://www.youtube.com/watch?v=PFR-W-_vrQ4",
+    "ally_comp_observed": [
+      "D.Va",
+      "Genji",
+      "Cassidy",
+      "Lifeweaver",
+      "Ana"
+    ],
+    "enemy_threats": [
+      "D.Va",
+      "Tracer",
+      "Echo",
+      "Kiriko",
+      "Brigitte"
+    ]
+  },
+  "fights": [
+    {
+      "fight_id": 1,
+      "time_range": "00:50 - 01:25",
+      "outcome": "WON",
+      "events": [
+        {
+          "t": "00:59",
+          "alive_ratio": "4v5",
+          "ally_alive": 4,
+          "enemy_alive": 5,
+          "dead_allies": [
+            "Lifeweaver"
+          ],
+          "player_hp": 250,
+          "ult_charge_pct": 20,
+          "event_type": "biotic_nade_used",
+          "target": "Self heal after taking burst damage near middle gateway",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "self_heal",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 80,
+          "duration_sec": 0.0,
+          "exposed_enemy": null
+        }
+      ]
+    },
+    {
+      "fight_id": 2,
+      "time_range": "01:58 - 03:30",
+      "outcome": "WON",
+      "events": [
+        {
+          "t": "02:01",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 190,
+          "ult_charge_pct": 68,
+          "event_type": "biotic_nade_used",
+          "target": "Offensive anti-nade thrown into hallway fight doorway",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "offensive_anti",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 85,
+          "duration_sec": 0.0,
+          "exposed_enemy": null
+        },
+        {
+          "t": "02:58",
+          "alive_ratio": "5v4",
+          "ally_alive": 5,
+          "enemy_alive": 4,
+          "dead_allies": [],
+          "player_hp": 250,
+          "ult_charge_pct": 100,
+          "event_type": "ult_used",
+          "target": "Nano Boost applied to ally D.Va engaging high ground",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": "D.Va",
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 100,
+          "duration_sec": 0.0,
+          "exposed_enemy": null
+        }
+      ]
+    }
+  ],
+  "_token_usage": {
+    "promptTokenCount": 17323,
+    "candidatesTokenCount": 1013,
+    "totalTokenCount": 19600,
+    "promptTokensDetails": [
+      {
+        "modality": "VIDEO",
+        "tokenCount": 16381
+      },
+      {
+        "modality": "TEXT",
+        "tokenCount": 942
+      }
+    ],
+    "thoughtsTokenCount": 1264,
+    "serviceTier": "standard"
+  },
+  "_model_used": "models/gemini-3.5-flash"
+}

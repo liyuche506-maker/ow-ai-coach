@@ -18,12 +18,12 @@
 ## 4. HUD-Grounded Timeline Audit (Micro Evidence)
 ### [Fight #2 | 01:43] `ANA_DIA_02` (CRITICAL)
 - **HUD Fact Diagnosis**: At [01:43] (5v5, Fight #2 LOST), against enemy threats (Doomfist / Tracer / Genji / Sombra / Kiriko), you fired a low-percentage poke Sleep Dart at 'Enemy team down street corridor from high ground window', putting your primary anti-dive tool on a 14s cooldown before the fight was decided.
-- **Actionable Fix**: Across our GM5 vs. Diamond dataset (0AJTQ5 & D86HQF), every fight where Ana died with Sleep Dart on cooldown resulted in a 100% fight loss, whereas holding Sleep Dart for the flanking Reaper/Tracer inside close quarters won 100% of fights. Never fire long-range poke Sleep Darts down main corridors when enemy flankers are alive.
+- **Actionable Fix**: Across our 15-match dataset, every fight where Ana died with Sleep Dart on cooldown resulted in a 100% fight loss, whereas disciplined anti-flanker sleeps converted up to 80-100% of fights into wins. Never fire long-range poke Sleep Darts down main corridors when enemy flankers/dive tanks are alive.
 
 ### [Fight #2 | 02:16] `ANA_DIA_02` (CRITICAL)
 - **HUD Fact Diagnosis**: At [02:16] (5v5, Fight #2 LOST), against enemy threats (Doomfist / Tracer / Genji / Sombra / Kiriko), you fired a low-percentage poke Sleep Dart at 'Enemy tank engaging on street', putting your primary anti-dive tool on a 14s cooldown before the fight was decided.
-- **Actionable Fix**: Across our GM5 vs. Diamond dataset (0AJTQ5 & D86HQF), every fight where Ana died with Sleep Dart on cooldown resulted in a 100% fight loss, whereas holding Sleep Dart for the flanking Reaper/Tracer inside close quarters won 100% of fights. Never fire long-range poke Sleep Darts down main corridors when enemy flankers are alive.
+- **Actionable Fix**: Across our 15-match dataset, every fight where Ana died with Sleep Dart on cooldown resulted in a 100% fight loss, whereas disciplined anti-flanker sleeps converted up to 80-100% of fights into wins. Never fire long-range poke Sleep Darts down main corridors when enemy flankers/dive tanks are alive.
 
 ### [Fight #2 | 02:32] `ANA_DIA_02` (CRITICAL)
 - **HUD Fact Diagnosis**: At [02:32] (3v4, Fight #2 LOST), against enemy threats (Doomfist / Tracer / Genji / Sombra / Kiriko), you were eliminated by Tracer after firing a poke Sleep Dart at [02:16] (Enemy tank engaging on street) (6s cooldown remaining at death).
-- **Actionable Fix**: Across our GM5 vs. Diamond dataset (0AJTQ5 & D86HQF), every fight where Ana died with Sleep Dart on cooldown resulted in a 100% fight loss, whereas holding Sleep Dart for the flanking Reaper/Tracer inside close quarters won 100% of fights. Never fire long-range poke Sleep Darts down main corridors when enemy flankers are alive.
+- **Actionable Fix**: Across our 15-match dataset, every fight where Ana died with Sleep Dart on cooldown resulted in a 100% fight loss, whereas disciplined anti-flanker sleeps converted up to 80-100% of fights into wins. Never fire long-range poke Sleep Darts down main corridors when enemy flankers/dive tanks are alive.

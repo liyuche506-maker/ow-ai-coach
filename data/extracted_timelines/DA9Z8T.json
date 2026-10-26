@@ -1,0 +1,142 @@
+{
+  "match_meta": {
+    "replay_code": "DA9Z8T",
+    "title": "What a champ Ana POV look like in a low GM lobby",
+    "player": "BIZ",
+    "hero": "Ana",
+    "rank": "Grandmaster 3",
+    "map": "Esperança",
+    "outcome": "win",
+    "duration": "00:10:59",
+    "youtube_url": "https://www.youtube.com/watch?v=dW9JXsa_INE",
+    "ally_comp_observed": [
+      "Ana",
+      "Kiriko",
+      "Ramattra",
+      "Sojourn",
+      "Tracer"
+    ],
+    "enemy_threats": [
+      "Winston",
+      "Moira",
+      "Sojourn",
+      "Tracer",
+      "Kiriko"
+    ]
+  },
+  "fights": [
+    {
+      "fight_id": 1,
+      "time_range": "00:40 - 01:25",
+      "outcome": "WON",
+      "events": [
+        {
+          "t": "00:43",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 250,
+          "ult_charge_pct": 15,
+          "event_type": "biotic_nade_used",
+          "target": "Winston",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "offensive_anti",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 100,
+          "duration_sec": 0,
+          "exposed_enemy": null
+        },
+        {
+          "t": "00:58",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 212,
+          "ult_charge_pct": 32,
+          "event_type": "sleep_dart_used",
+          "target": "Winston",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 100,
+          "duration_sec": 0,
+          "exposed_enemy": null
+        }
+      ]
+    },
+    {
+      "fight_id": 2,
+      "time_range": "02:35 - 02:45",
+      "outcome": "LOST",
+      "events": [
+        {
+          "t": "02:38",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 225,
+          "ult_charge_pct": 64,
+          "event_type": "sleep_dart_used",
+          "target": "Moira",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 100,
+          "duration_sec": 0,
+          "exposed_enemy": null
+        },
+        {
+          "t": "02:45",
+          "alive_ratio": "4v5",
+          "ally_alive": 4,
+          "enemy_alive": 5,
+          "dead_allies": [
+            "Ana"
+          ],
+          "player_hp": 0,
+          "ult_charge_pct": 73,
+          "event_type": "player_death",
+          "target": null,
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": "Winston",
+          "sleep_on_cd_when_dove": true,
+          "sleep_cd_remaining_sec": 10,
+          "ally_hp_pct": 0,
+          "duration_sec": 0,
+          "exposed_enemy": null
+        }
+      ]
+    }
+  ],
+  "_token_usage": {
+    "promptTokenCount": 17323,
+    "candidatesTokenCount": 1150,
+    "totalTokenCount": 18473,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 942
+      },
+      {
+        "modality": "VIDEO",
+        "tokenCount": 16381
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "_model_used": "models/gemini-3.1-flash-lite"
+}

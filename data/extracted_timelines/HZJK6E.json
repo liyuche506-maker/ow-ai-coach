@@ -1,0 +1,141 @@
+{
+  "match_meta": {
+    "replay_code": "HZJK6E",
+    "title": "뉴정시 아나 플레이",
+    "player": "CN7",
+    "hero": "Ana",
+    "rank": "Diamond 4",
+    "map": "New Junk City",
+    "outcome": "win",
+    "duration": "00:14:15",
+    "youtube_url": "https://www.youtube.com/watch?v=hGWJHwOj7zc",
+    "ally_comp_observed": [
+      "Ramattra",
+      "Genji",
+      "Tracer",
+      "Ana",
+      "Lifeweaver"
+    ],
+    "enemy_threats": [
+      "D.Va",
+      "Venture",
+      "Genji"
+    ]
+  },
+  "fights": [
+    {
+      "fight_id": 1,
+      "time_range": "00:40 - 01:45",
+      "outcome": "WON",
+      "events": [
+        {
+          "t": "01:28",
+          "alive_ratio": "4v5",
+          "ally_alive": 4,
+          "enemy_alive": 5,
+          "dead_allies": [
+            "Genji"
+          ],
+          "player_hp": 53,
+          "ult_charge_pct": 66,
+          "event_type": "biotic_nade_used",
+          "target": "Self-heal after taking burst damage from enemy flanker",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "self_heal",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 21,
+          "duration_sec": 0.0,
+          "exposed_enemy": null
+        }
+      ]
+    },
+    {
+      "fight_id": 2,
+      "time_range": "02:00 - 03:40",
+      "outcome": "WON",
+      "events": [
+        {
+          "t": "02:09",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 250,
+          "ult_charge_pct": 28,
+          "event_type": "sleep_dart_used",
+          "target": "Venture (CARBAGE) coming through central doorway",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 100,
+          "duration_sec": 0.0,
+          "exposed_enemy": null
+        },
+        {
+          "t": "03:06",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 230,
+          "ult_charge_pct": 80,
+          "event_type": "sleep_dart_used",
+          "target": "Venture (CARBAGE) engaged near Tree of Life",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 92,
+          "duration_sec": 0.0,
+          "exposed_enemy": null
+        },
+        {
+          "t": "03:26",
+          "alive_ratio": "5v2",
+          "ally_alive": 5,
+          "enemy_alive": 2,
+          "dead_allies": [],
+          "player_hp": 120,
+          "ult_charge_pct": 99,
+          "event_type": "sleep_dart_used",
+          "target": "D.Va mech contesting point during Overtime",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 48,
+          "duration_sec": 0.0,
+          "exposed_enemy": null
+        }
+      ]
+    }
+  ],
+  "_token_usage": {
+    "promptTokenCount": 17317,
+    "candidatesTokenCount": 1209,
+    "totalTokenCount": 20401,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 936
+      },
+      {
+        "modality": "VIDEO",
+        "tokenCount": 16381
+      }
+    ],
+    "thoughtsTokenCount": 1875,
+    "serviceTier": "standard"
+  },
+  "_model_used": "models/gemini-3.5-flash"
+}

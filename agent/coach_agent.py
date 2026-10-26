@@ -37,12 +37,19 @@ def evaluate_timeline_with_rubric(
     sleep_violations: List[Dict[str, Any]] = []
     clutch_sleeps: List[Dict[str, Any]] = []
     ult_violations: List[Dict[str, Any]] = []
+    unspent_utility_deaths: List[Dict[str, Any]] = []
     micro_findings: List[Dict[str, Any]] = []
 
     for fight in fights:
         fid = fight["fight_id"]
         f_outcome = str(fight.get("outcome", "UNKNOWN")).upper()
         last_poke_sleep = None
+        fight_nades_used = sum(
+            1 for e in fight.get("events", []) if e.get("event_type") == "biotic_nade_used"
+        )
+        fight_sleeps_used = sum(
+            1 for e in fight.get("events", []) if e.get("event_type") == "sleep_dart_used"
+        )
 
         for ev in fight.get("events", []):
             etype = ev.get("event_type")
@@ -124,6 +131,39 @@ def evaluate_timeline_with_rubric(
                     "fix": rule["actionable_fix"],
                 }
                 sleep_violations.append(item)
+                micro_findings.append(item)
+
+            elif (
+                etype == "player_death"
+                and not ev.get("sleep_on_cd_when_dove")
+                and fight_nades_used == 0
+                and fight_sleeps_used == 0
+                and "ANA_DIA_05" in rules_by_id
+            ):
+                rule = rules_by_id["ANA_DIA_05"]
+                dead_list = ev.get("dead_allies") or []
+                dead_ctx = (
+                    f"dead allies: {', '.join(str(x) for x in dead_list)}"
+                    if dead_list
+                    else "caught in open sightline"
+                )
+                msg = rule["diagnostic_template"].format(
+                    timestamp=t_str,
+                    alive_ratio=alive_str,
+                    fight_id=fid,
+                    fight_outcome=f_outcome,
+                    killed_by=ev.get("killed_by") or ev.get("target") or "enemy",
+                    dead_allies_context=dead_ctx,
+                )
+                item = {
+                    "fight_id": fid,
+                    "rule_id": "ANA_DIA_05",
+                    "severity": rule["severity"],
+                    "timestamp": t_str,
+                    "diagnosis": msg,
+                    "fix": rule["actionable_fix"],
+                }
+                unspent_utility_deaths.append(item)
                 micro_findings.append(item)
 
             elif etype == "ult_used":
@@ -238,6 +278,10 @@ def evaluate_timeline_with_rubric(
     if ult_violations:
         habits.append(
             f"[Habit #4 - Unconverted Disadvantage Nano Boost]: {len(ult_violations)} Nano Boost(s) were invested at a numbers disadvantage in fights that still resulted in a loss."
+        )
+    if unspent_utility_deaths:
+        habits.append(
+            f"[Habit #5 - Dying With Unspent Utility]: You died {len(unspent_utility_deaths)} time(s) in fights where you deployed 0 Biotic Grenades and 0 Sleep Darts (Diamond Loss avg: 1.20 deaths/segment vs. GM 0.60)."
         )
     if not habits:
         habits.append(

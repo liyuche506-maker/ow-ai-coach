@@ -1,0 +1,167 @@
+{
+  "match_meta": {
+    "replay_code": "SW5Y5Y",
+    "title": "김이준 아픈 손가락들 데리고 이기기 힘드네",
+    "player": "차분한다홍마법사",
+    "hero": "Ana",
+    "rank": "Grandmaster 5",
+    "map": "Adlersbrunn",
+    "outcome": "win",
+    "duration": "00:19:48",
+    "youtube_url": "https://www.youtube.com/watch?v=859IM0xMiCc",
+    "ally_comp_observed": [
+      "Ana",
+      "Reinhardt",
+      "Cassidy",
+      "Kiriko",
+      "Soldier: 76"
+    ],
+    "enemy_threats": [
+      "Reinhardt",
+      "Tracer",
+      "Kiriko",
+      "Soldier: 76",
+      "Lucio"
+    ]
+  },
+  "fights": [
+    {
+      "fight_id": 1,
+      "time_range": "00:53 - 01:10",
+      "outcome": "WON",
+      "events": [
+        {
+          "t": "00:53",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 250,
+          "ult_charge_pct": 0,
+          "event_type": "sleep_dart_used",
+          "target": "Reinhardt",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 100,
+          "duration_sec": 0,
+          "exposed_enemy": null
+        },
+        {
+          "t": "01:11",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 250,
+          "ult_charge_pct": 15,
+          "event_type": "biotic_nade_used",
+          "target": "Reinhardt",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "offensive_anti",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 100,
+          "duration_sec": 0,
+          "exposed_enemy": null
+        }
+      ]
+    },
+    {
+      "fight_id": 2,
+      "time_range": "01:15 - 01:30",
+      "outcome": "WON",
+      "events": [
+        {
+          "t": "01:18",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 232,
+          "ult_charge_pct": 25,
+          "event_type": "biotic_nade_used",
+          "target": "Reinhardt",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": "offensive_anti",
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 90,
+          "duration_sec": 0,
+          "exposed_enemy": null
+        }
+      ]
+    },
+    {
+      "fight_id": 3,
+      "time_range": "02:40 - 03:20",
+      "outcome": "WON",
+      "events": [
+        {
+          "t": "02:44",
+          "alive_ratio": "5v5",
+          "ally_alive": 5,
+          "enemy_alive": 5,
+          "dead_allies": [],
+          "player_hp": 250,
+          "ult_charge_pct": 50,
+          "event_type": "sleep_dart_used",
+          "target": "Tracer",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 100,
+          "duration_sec": 0,
+          "exposed_enemy": null
+        },
+        {
+          "t": "03:19",
+          "alive_ratio": "4v4",
+          "ally_alive": 4,
+          "enemy_alive": 4,
+          "dead_allies": [],
+          "player_hp": 190,
+          "ult_charge_pct": 90,
+          "event_type": "sleep_dart_used",
+          "target": "Tracer",
+          "is_poke_lottery_sleep": false,
+          "nade_usage": null,
+          "ult_target": null,
+          "killed_by": null,
+          "sleep_on_cd_when_dove": false,
+          "sleep_cd_remaining_sec": 0,
+          "ally_hp_pct": 80,
+          "duration_sec": 0,
+          "exposed_enemy": null
+        }
+      ]
+    }
+  ],
+  "_token_usage": {
+    "promptTokenCount": 17339,
+    "candidatesTokenCount": 1437,
+    "totalTokenCount": 18776,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 958
+      },
+      {
+        "modality": "VIDEO",
+        "tokenCount": 16381
+      }
+    ],
+    "serviceTier": "standard"
+  },
+  "_model_used": "models/gemini-3.1-flash-lite"
+}

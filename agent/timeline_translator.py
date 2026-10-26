@@ -10,12 +10,14 @@ structured, objective MatchTimeline JSON focused on HUD facts:
 
 import json
 import os
+import time
 import urllib.error
 import urllib.request
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-DEFAULT_MODEL = "models/gemini-3.8-flash"
+DEFAULT_MODEL = "models/gemini-3.5-flash"
+FALLBACK_MODELS = ["models/gemini-3.5-flash", "models/gemini-3.1-flash-lite", "models/gemini-3.8-flash"]
 
 TIMELINE_EXTRACTION_SYSTEM_PROMPT = """You are an objective Overwatch 2 HUD & Fight Telemetry Extractor.
 Do NOT give coaching advice. Your ONLY job is to read the 16:9 first-person HUD and output a factual JSON timeline of teamfights.
@@ -100,15 +102,19 @@ def load_api_key(explicit_key: Optional[str] = None) -> str:
 
 def translate_vod_with_gemini(
     replay_meta: Dict[str, Any],
-    start_offset: str = "30s",
-    end_offset: str = "330s",
+    start_offset: str = "40s",
+    end_offset: str = "240s",
     fps: float = 1.0,
     model: str = DEFAULT_MODEL,
     api_key: Optional[str] = None,
+    max_retries: int = 3,
 ) -> Dict[str, Any]:
     """Call Gemini REST API natively with an owreplays.tv YouTube URL to extract MatchTimeline JSON."""
     key = load_api_key(api_key)
-    youtube_url = replay_meta.get("youtube_url") or replay_meta["vod_cameras"][0]["youtube_url"]
+    youtube_url = (
+        replay_meta.get("youtube_url")
+        or replay_meta["vod_cameras"][0]["youtube_url"]
+    )
 
     prompt_text = USER_EXTRACTION_PROMPT_TEMPLATE.format(
         replay_code=replay_meta.get("replay_code", "UNKNOWN"),
@@ -149,15 +155,30 @@ def translate_vod_with_gemini(
         },
     }
 
-    req = urllib.request.Request(
-        url,
-        data=json.dumps(payload).encode("utf-8"),
-        headers={"Content-Type": "application/json"},
-    )
-    with urllib.request.urlopen(req, timeout=240) as resp:
-        body = json.loads(resp.read().decode("utf-8"))
+    last_err: Optional[Exception] = None
+    for attempt in range(1, max_retries + 1):
+        active_model = FALLBACK_MODELS[(attempt - 1) % len(FALLBACK_MODELS)] if model == DEFAULT_MODEL else model
+        active_url = f"https://generativelanguage.googleapis.com/v1beta/{active_model}:generateContent?key={key}"
+        try:
+            req = urllib.request.Request(
+                active_url,
+                data=json.dumps(payload).encode("utf-8"),
+                headers={"Content-Type": "application/json"},
+            )
+            with urllib.request.urlopen(req, timeout=90) as resp:
+                body = json.loads(resp.read().decode("utf-8"))
 
-    raw_json = body["candidates"][0]["content"]["parts"][0]["text"]
-    timeline = json.loads(raw_json)
-    timeline["_token_usage"] = body.get("usageMetadata", {})
-    return timeline
+            raw_json = body["candidates"][0]["content"]["parts"][0]["text"]
+            timeline = json.loads(raw_json)
+            timeline["_token_usage"] = body.get("usageMetadata", {})
+            timeline["_model_used"] = active_model
+            return timeline
+        except Exception as exc:
+            last_err = exc
+            wait_sec = 5 * attempt
+            print(
+                f"  [Retry {attempt}/{max_retries} on {active_model}] Error on {replay_meta.get('replay_code')}: {exc}. Waiting {wait_sec}s..."
+            )
+            time.sleep(wait_sec)
+
+    raise RuntimeError(f"Failed after {max_retries} retries: {last_err}")
